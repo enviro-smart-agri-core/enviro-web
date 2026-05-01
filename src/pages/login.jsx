@@ -14,18 +14,20 @@ export default function Login() {
     e.preventDefault();
     setError('');
 
-    try {
-      // 1. Call the clean function from auth.js
+try {
       const data = await loginUser(email, password);
 
-      // 2. Save the token
       const token = data.token || (data.data && data.data.token);
+      
+
+      const actualUsername = data.username || (data.user && data.user.username) || (data.data && data.data.username) || (data.data && data.data.user && data.data.user.username) || "Eco-Warrior";
+
       if (token) {
         localStorage.setItem('token', token);
+        localStorage.setItem('username', actualUsername); 
       }
 
-      // 3. Send them to the home page
-      navigate('/'); 
+      navigate('/dashboard'); 
 
     } catch (err) {
       setError(err.message);

@@ -5,7 +5,7 @@ export const isLoggedIn = () => {
 };
 
 export const getUsername = () => {
-  return localStorage.getItem('username') || 'Omar'; 
+  return localStorage.getItem('username') || 'User'; 
 };
 
 export const logout = () => {
