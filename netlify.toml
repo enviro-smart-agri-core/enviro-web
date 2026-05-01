@@ -4,7 +4,6 @@
   status = 200
   force = true
 
-# This bottom part fixes React Router so you don't get 404s when you refresh the page!
 [[redirects]]
   from = "/*"
   to = "/index.html"
