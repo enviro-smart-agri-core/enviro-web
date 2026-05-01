@@ -27,7 +27,7 @@ try {
         localStorage.setItem('username', actualUsername); 
       }
 
-      navigate('/dashboard'); 
+      navigate('/'); 
 
     } catch (err) {
       setError(err.message);
