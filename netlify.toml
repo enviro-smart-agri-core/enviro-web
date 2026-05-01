@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://51.21.241.218/api/:splat"
+  status = 200
+  force = true
+
+# This bottom part fixes React Router so you don't get 404s when you refresh the page!
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
