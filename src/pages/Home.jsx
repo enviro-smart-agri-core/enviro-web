@@ -1,23 +1,37 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import styles from '../styles/home.module.css';
 import kittenImg from '/assets/lmao.png';
 import firstImg from '/assets/firstImg.jpg';
 import dashboardImg from '/assets/image(1).png';
 import { ShieldCheck, Thermometer, Waves } from 'lucide-react';
+import { isLoggedIn } from '../utils/checker'; 
 
-const Hero = () => (
-  <section className={styles.sector1}>
-    <h2 className={styles['hidden-left']}>Urban Agriculture, Fully Autonomous.</h2>
-    <p className={`${styles['hidden-left']} ${styles['delay-1']}`}>
-      Transform any balcony or rooftop into a self-sustaining micro-farm. Enviro combines industrial edge nodes with AI diagnostics to automate your irrigation, saving municipal water and optimizing crop health without human intervention.
-    </p>
-    <Link to="../signup" className={`${styles.btn} ${styles['hidden-left']} ${styles['delay-2']}`}>
-      <i className="fi fi-rr-sign-in-alt"></i> Register Now!
-    </Link>
-    <img src={firstImg} alt="korsy" className={`${styles['hidden-reveal']} ${styles['delay-1']}`} />
-  </section>
-);
+const Hero = () => {
+  const loggedIn = isLoggedIn(); // Check auth status
+
+  return (
+    <section className={styles.sector1}>
+      <h2 className={styles['hidden-left']}>Urban Agriculture, Fully Autonomous.</h2>
+      <p className={`${styles['hidden-left']} ${styles['delay-1']}`}>
+        Transform any balcony or rooftop into a self-sustaining micro-farm. Enviro combines industrial edge nodes with AI diagnostics to automate your irrigation, saving municipal water and optimizing crop health without human intervention.
+      </p>
+      
+      {/*Dynamic Button based on Login Status */}
+      {loggedIn ? (
+        <Link to="/dashboard" className={`${styles.btn} ${styles['hidden-left']} ${styles['delay-2']}`}>
+          Go to Dashboard ➔
+        </Link>
+      ) : (
+        <Link to="/signup" className={`${styles.btn} ${styles['hidden-left']} ${styles['delay-2']}`}>
+          <i className="fi fi-rr-sign-in-alt"></i> Register Now!
+        </Link>
+      )}
+
+      <img src={firstImg} alt="korsy" className={`${styles['hidden-reveal']} ${styles['delay-1']}`} />
+    </section>
+  );
+};
 
 const SmartSensors = () => (
   <section className={styles.sector2}>

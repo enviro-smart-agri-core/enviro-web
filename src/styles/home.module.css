@@ -70,21 +70,58 @@ body {
     padding-bottom: 5px;
 }
 
-.box > .signup-btn {
+
+.signup-btn {
     grid-area: signup;
     justify-self: end;
     text-decoration: none;
     color: white;
     background-color: var(--title-button-color);
-    border: 1px solid var(--title-button-color);
+    border: 2px solid var(--title-button-color);
     padding: 10px 16px;
     border-radius: 10px;
     font-size: clamp(14px, 1.2vw, 22px);
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .signup-btn i {
     position: relative;
     top: 3px;
+}
+
+
+.user-controls {
+    grid-area: signup;
+    justify-self: end;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.user-greeting {
+    color: var(--title-color);
+    font-weight: 700;
+    font-size: clamp(15px, 1.2vw, 20px);
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: #ff4d4d;
+    border: 2px solid #ff4d4d;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.logout-btn:hover {
+    background-color: #ff4d4d;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 77, 77, 0.25);
+}
+
+.logout-btn:active {
+    transform: translateY(1px);
 }
 
 
