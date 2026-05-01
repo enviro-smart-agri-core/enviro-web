@@ -17,10 +17,10 @@ const Hero = () => {
         Transform any balcony or rooftop into a self-sustaining micro-farm. Enviro combines industrial edge nodes with AI diagnostics to automate your irrigation, saving municipal water and optimizing crop health without human intervention.
       </p>
       
-      {/*Dynamic Button based on Login Status */}
+      {/*dynamic Login Status */}
       {loggedIn ? (
         <Link to="/dashboard" className={`${styles.btn} ${styles['hidden-left']} ${styles['delay-2']}`}>
-          Go to Dashboard ➔
+          Go to Dashboard
         </Link>
       ) : (
         <Link to="/signup" className={`${styles.btn} ${styles['hidden-left']} ${styles['delay-2']}`}>
