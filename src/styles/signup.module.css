@@ -1,0 +1,331 @@
+/* first main color pallete which i forgot in the login css */
+:root {
+
+    --balsy-white: #ffffff;
+    --hoda-greenary: #538d72;
+    --idk: #d1eff0;
+    --idk2: #f8f9fa;
+
+    --color1: #000;
+    --color2: #333;
+    --mint-tea: #c4d7ce;
+    --gray: #c4c4c4;
+    --yayoo: #e0e0e0;
+    --yayoo2: #0056b3;
+
+    --shadow-the-hedgehog: rgba(0, 0, 0, 0.05);
+    --sneakypeaky-shadow: rgba(0, 0, 0, 0.15);
+    --thicc-shadow: rgba(0, 0, 0, 0.2);
+    --radioactive-7oda: rgba(209, 239, 240, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.back-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color2);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+    z-index: 10; /* Ensures it stays clickable above everything */
+}
+
+.back-btn:hover {
+    color: var(--hoda-greenary);
+    transform: translateX(-4px); /* Satisfying little slide to the left */
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--balsy-white);
+    overflow-x: hidden;
+}
+
+.box {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.left-box, .right-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
+}
+
+.left-box {
+    background-color: var(--balsy-white);
+}
+
+.right-box {
+    background-color: var(--hoda-greenary);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 380px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--balsy-white);
+    gap: 1.5rem;
+    max-width: 500px;
+}
+
+.right-content img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+}
+
+.right-content h2 br {
+    display: none;
+}
+
+.right-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    padding: 0 1rem;
+}
+
+.form-container h1 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--color1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.2rem;
+}
+
+.input-son {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    background-color: var(--hoda-greenary);
+    color: var(--balsy-white);
+    font-size: 1rem;
+    box-shadow: 0 4px 6px var(--sneakypeaky-shadow);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-son::placeholder {
+    color: var(--mint-tea);
+}
+
+.input-son:focus {
+    box-shadow: 0 8px 15px var(--thicc-shadow), 0 0 0 3px var(--radioactive-7oda);
+    transform: translateY(-2px);
+}
+
+.register-son {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 50px;
+    border: none;
+    background-color: var(--idk);
+    color: var(--color1);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px var(--sneakypeaky-shadow);
+    margin-top: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.register-son:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 15px var(--thicc-shadow);
+}
+
+.register-son:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+
+/* the OR with umm yk these lines */
+
+.ORSHI {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+    color: var(--color1);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.ORSHI::before,
+.ORSHI::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--gray);
+}
+
+.ORSHI span {
+    padding: 0 1rem;
+}
+
+.login-link p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color1);
+}
+
+.login-link a {
+    color: var(--yayoo2);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+
+/* google button i guess it works? */
+
+.gglbtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.gglbtn p {
+    font-size: 0.9rem;
+    color: var(--color1);
+}
+
+.google-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--balsy-white);
+    border: 1px solid var(--yayoo);
+    border-radius: 12px;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 2px 8px var(--shadow-the-hedgehog);
+    cursor: pointer;
+    gap: 0.4rem;
+    transition: background-color 0.2s;
+}
+
+.google-btn:hover {
+    background-color: var(--idk2);
+}
+
+.google-btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.google-btn span {
+    font-size: 0.85rem;
+    color: var(--color2);
+    font-weight: 500;
+}
+
+/* Responsiveness? */
+
+@media (max-width: 850px) {
+    .box {
+        flex-direction: column;
+    }
+
+    .left-box,
+    .right-box {
+        width: 100%;
+        padding: 4rem 2rem;
+    }
+
+    .back-btn {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+.form-container {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.form-container>h1 {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.1s forwards;
+}
+
+form {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+}
+
+.ORSHI {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.3s forwards;
+}
+
+.social-login {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+}
+
+.login-link {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.right-content img {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out 0.4s forwards;
+}
+
+.right-content h2 {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out 0.4s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
