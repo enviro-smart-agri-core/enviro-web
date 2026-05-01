@@ -7,29 +7,34 @@ export default function Footer() {
       <div className={styles['footer-col']}>
         <h3>Home</h3>
         <ul>
-          <li><Link to="/features">Features</Link></li>
+          <li><Link to="/products">Products</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
+      
       <div className={styles['footer-col']}>
         <h3>Documents</h3>
         <ul>
-          <li><a href="#">Links</a></li>
-          <li><a href="#">Tools</a></li>
+          <li>
+            <a href="/assets/Enviro_Privacy_Policy.pdf" target='_blank'>
+              Privacy Policy
+            </a>
+          </li>
+          <li><a href="/assets/Enviro_Terms_of_Service.pdf" target='_blank' >Terms of Service</a></li>
         </ul>
       </div>
+
       <div className={styles['footer-col']}>
         <h3>Community</h3>
         <ul>
           <li><Link to="/about">About us</Link></li>
           <li><Link to="/events">Events</Link></li>
-          <li><Link to="/privacy">Privacy Policy</Link></li>
         </ul>
       </div>
       <div className={styles['footer-col']}>
         <h3>Contact Us</h3>
         <ul>
-          <li><a href="tel:+2001507446099">+20 01507446099</a></li>
+          <li><a href="tel:+201005792211">+20 1005792211</a></li>
           <li><a href="mailto:Enviro@gmail.com">Enviro@gmail.com</a></li>
         </ul>
       </div>
