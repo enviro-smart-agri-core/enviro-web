@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/signup.module.css'; 
-import { registerUser } from '../api/auth'; // 👈 Import the service
+import { registerUser } from '../api/auth';
+
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -17,7 +18,6 @@ export default function Register() {
     setError('');
 
     try {
-      // Clean and simple API call
       await registerUser(username, email, password, name);
 
       alert('Account created successfully! Please log in.');

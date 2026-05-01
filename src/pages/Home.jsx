@@ -68,13 +68,12 @@ export default function Home() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Add the hashed 'show' class from the CSS module
           entry.target.classList.add(styles.show);
         }
       });
     }, { threshold: 0 });
 
-    // Look for elements using the hashed class names from the module
+
     const hiddenElements = document.querySelectorAll(
       `.${styles['hidden-left']}, .${styles['hidden-right']}, .${styles['hidden-up']}, .${styles['hidden-bounce']}, .${styles['hidden-reveal']}`
     );

@@ -1,4 +1,4 @@
-// src/services/auth.js
+// src/api/auth.js
 
 const BASE_URL = 'http://51.21.241.218/api/v1/auth';
 
