@@ -8,7 +8,7 @@
     --color1: #000;
     --color2: #333;
     --mint-tea: #c4d7ce;
-    --gray: #c4c4c4;
+    --gay: #c4c4c4;
     --yayoo: #e0e0e0;
     --yayoo2: #0056b3;
 
@@ -182,7 +182,7 @@ form {
 .ORSHI::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gay);
 }
 
 .ORSHI span {
