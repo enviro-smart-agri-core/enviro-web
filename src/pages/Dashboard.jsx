@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styles from '../styles/userdashboard.module.css'; 
 import { updateProfile, updatePassword } from '../api/auth'; 
+
+// 🌟 Import your new hook!
+import { useAuth } from '../hooks/useAuth';
 
 import { 
   LayoutDashboard, Cpu, Scan, Lock, ShoppingBag, Smartphone, 
@@ -11,20 +13,15 @@ import {
 } from 'lucide-react';
 
 export default function Dashboard() {
-  const navigate = useNavigate();
-
-  const token = localStorage.getItem('token');
-  
-  // 🌟 FIX: Swapped these exactly how you requested
-  const displayEmail = localStorage.getItem('email') || 'userExample@email.com'; 
-  const displayUsername = localStorage.getItem('username') || 'user';
+  // 🌟 One line grabs everything safely!
+  const { token, email, username, fullName, logout } = useAuth();
 
   const [activeView, setActiveView] = useState('view-home');
   const [modal, setModal] = useState({ isOpen: false, featureName: '' });
 
-  // 🌟 FIX: State variables renamed to match your new data structure
-  const [editUsername, setEditUsername] = useState(displayUsername);
-  const [editEmail, setEditEmail] = useState(displayEmail);
+  // 🌟 Using the hook variables to set the initial form state
+  const [editUsername, setEditUsername] = useState(username);
+  const [editEmail, setEditEmail] = useState(email);
   const [currentPass, setCurrentPass] = useState('');
   const [newPass, setNewPass] = useState('');
   const [profileMsg, setProfileMsg] = useState(''); 
@@ -32,7 +29,8 @@ export default function Dashboard() {
 
   const getHeaderInfo = () => {
     switch (activeView) {
-      case 'view-home': return { title: 'Farm Overview', subtitle: `Read-only web access. Connected to ${displayUsername}'s node.` };
+      // 🌟 Fixed the variable name here!
+      case 'view-home': return { title: 'Farm Overview', subtitle: `Read-only web access. Connected to ${username}'s node.` };
       case 'view-sensors': return { title: 'Sensors', subtitle: 'Monitor your farm devices securely.' };
       case 'view-profile': return { title: 'Profile', subtitle: 'Manage your account settings.' };
       case 'view-edit-profile': return { title: 'Manage Profile', subtitle: 'Update your personal details.' };
@@ -42,26 +40,17 @@ export default function Dashboard() {
   };
 
   const { title, subtitle } = getHeaderInfo();
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('email'); // Added email removal
-    localStorage.removeItem('name');
-    navigate('/');
-  };
-
+//assuming 7oda will add change and forget pass in the backend
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
     setProfileMsg("Saving...");
     try {
-      // Sending the newly swapped data to the backend
       await updateProfile(token, editUsername, editEmail);
       
       localStorage.setItem('username', editUsername);
       localStorage.setItem('email', editEmail);
       
-      setProfileMsg("Profile updated successfully! ✅");
+      setProfileMsg("Profile updated successfully! ");
       setTimeout(() => {
         setProfileMsg('');
         setActiveView('view-profile');
@@ -76,7 +65,7 @@ export default function Dashboard() {
     setSecurityMsg("Updating...");
     try {
       await updatePassword(token, currentPass, newPass);
-      setSecurityMsg("Password secured! 🔒");
+      setSecurityMsg("Password secured! ");
       setCurrentPass('');
       setNewPass('');
       setTimeout(() => {
@@ -107,7 +96,7 @@ export default function Dashboard() {
           <button className={`${styles['navigation-item']} ${styles.noaccess}`} onClick={() => setModal({ isOpen: true, featureName: 'AI Disease Scanning' })}>
             <div className={styles['nav-left']}><Scan size={20} /> Scan</div><Lock size={14} />
           </button>
-          <button className={`${styles['navigation-item']} ${styles.noaccess}`} onClick={() => setModal({ isOpen: true, featureName: 'Supply Shop' })}>
+          <button className={`${styles['navigation-item']} ${styles.noaccess}`} onClick={() => setModal({ isOpen: true, featureName: 'Shop' })}>
             <div className={styles['nav-left']}><ShoppingBag size={20} /> Shop</div><Lock size={14} />
           </button>
         </div>
@@ -170,8 +159,8 @@ export default function Dashboard() {
           <div className={styles['profile-header-card']}>
             <div className={styles['big-icon']}><User size={40} /></div>
             <div>
-              <h2 style={{ fontWeight: 900 }}>{displayUsername}</h2>
-              <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{displayEmail}</p>
+              <h2 style={{ fontWeight: 900 }}>{editUsername}</h2>
+              <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{editEmail}</p>
             </div>
           </div>
 
@@ -188,20 +177,20 @@ export default function Dashboard() {
           <h3 className={styles['list-section-title']}>Preferences</h3>
           <div className={styles['settings-list']}>
             <div className={styles['settings-item']}><div className={styles['settings-item-left']}><Info size={18} /> About us</div><div className={styles['settings-item-right']}><ChevronRight size={18} /></div></div>
-            <div className={styles['settings-item']} onClick={handleLogout} style={{ color: '#ef4444' }}>
+            {/* 🌟 Hook's logout function wired directly here */}
+            <div className={styles['settings-item']} onClick={logout} style={{ color: '#ef4444', cursor: 'pointer' }}>
               <div className={styles['settings-item-left']} style={{ color: '#ef4444' }}><LogOut size={18} /> Logout</div>
             </div>
           </div>
         </div>
 
-        {/* 🌟 VIEW 4: MANAGE PROFILE */}
+        {/* VIEW 4: MANAGE PROFILE */}
         <div className={`${styles['app-view']} ${activeView === 'view-edit-profile' ? styles.active : ''}`}>
           <form className={styles.card} style={{ maxWidth: '600px' }} onSubmit={handleProfileSubmit}>
             <h2 style={{ color: 'var(--dark-evergreen)', marginBottom: '10px' }}>Edit Details</h2>
             {profileMsg && <p style={{ marginBottom: '15px', color: 'var(--forest-teal)', fontWeight: 600 }}>{profileMsg}</p>}
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {/* Labels swapped to match the actual data! */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <label style={{ fontWeight: 600, color: 'var(--text-muted)', fontSize: '0.9rem' }}>Username</label>
                 <input 

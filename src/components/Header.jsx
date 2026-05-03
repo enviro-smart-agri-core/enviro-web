@@ -1,11 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from '../styles/home.module.css';
-import { isLoggedIn, getUsername, logout } from '../utils/checker';
+// 🌟 IMPORT YOUR NEW HOOK
+import { useAuth } from '../hooks/useAuth';
 
 export default function Header() {
-  const navigate = useNavigate();
-  const loggedIn = isLoggedIn();
-  const username = getUsername();
+  // 🌟 CALL THE HOOK ONCE TO GET EVERYTHING
+  const { isLoggedIn, username, logout } = useAuth();
 
   return (
     <header className={styles.box}>
@@ -19,20 +19,11 @@ export default function Header() {
         </ul>
       </nav>
 
-      {loggedIn ? (
+      {isLoggedIn ? (
         <div className={styles['user-controls']}>
-          <span className={styles['user-greeting']}>
-            Hi, {username}!
-          </span>
-
-          <Link to="/dashboard" className={styles['signup-btn']}>
-            Dashboard
-          </Link>
-
-          <button
-            onClick={logout} //calling fn quick
-            className={`${styles['signup-btn']} ${styles['logout-btn']}`}
-          >
+          <span className={styles['user-greeting']}>Hi, {username}!</span>
+          <Link to="/dashboard" className={styles['signup-btn']}>Dashboard</Link>
+          <button onClick={logout} className={`${styles['signup-btn']} ${styles['logout-btn']}`}>
             Logout
           </button>
         </div>

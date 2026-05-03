@@ -1,6 +1,6 @@
 // src/api/auth.js
 
-const BASE_URL = '/api/v1/auth';
+const BASE_URL = 'http://51.21.241.218/api/v1/auth';
 
 export const loginUser = async (email, password) => {
     const response = await fetch(`${BASE_URL}/login`, {
