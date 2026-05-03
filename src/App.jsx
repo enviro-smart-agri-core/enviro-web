@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 
 import Contact from './pages/Contact';
+import About from './pages/About';
 // 🌟 NEW PATHS
 import Login from './pages/auth/Login';
 import Register from './pages/auth/SignUp';
@@ -32,6 +33,7 @@ export default function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
         </Route>
 
         {/* Auth pages stand alone */}

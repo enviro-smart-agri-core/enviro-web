@@ -7,7 +7,7 @@ export default function Footer() {
       <div className={styles['footer-col']}>
         <h3>Home</h3>
         <ul>
-          <li><Link to="/products">Products</Link></li>
+          <li><Link to="/about">About Us</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
