@@ -42,7 +42,7 @@ export default function Contact() {
             <div className={styles.icon}><Phone size={20} /></div>
             <div className={styles.details}>
               <h4>TALK WITH US</h4>
-              <p>+20 1507446099</p>
+              <p>+20 1005792211</p>
             </div>
           </div>
 
@@ -50,21 +50,21 @@ export default function Contact() {
             <div className={styles.icon}><MapPin size={20} /></div>
             <div className={styles.details}>
               <h4>OUR GREENHOUSE OFFICE</h4>
-              <p>42 Fernwood Lande,<br />Cascadia Arboretum, WA 98001</p>
+              <p>Semouha,<br />Alexandria</p>
             </div>
           </div>
 
           <div className={styles.supportCards}>
             <div className={`${styles.card} ${styles.availability}`}>
               <h4>AVAILABILITY</h4>
-              <p>Mon - Fri<br />09:00 - 17:00 EG</p>
+              <p>Mon - Fri<br />09:00 AM - 5:00 PM EG</p>
             </div>
             <div className={`${styles.card} ${styles.social}`}>
               <h4>SOCIAL</h4>
               <ul>
                 <li><a href="#">Facebook</a></li>
-                <li><a href="#">Mail</a></li>
-                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">X</a></li>
               </ul>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function Contact() {
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label htmlFor="fullName">FULL NAME</label>
-                <input type="text" id="fullName" name="fullName" placeholder="E.g Youssef Elshenawy" />
+                <input type="text" id="fullName" name="fullName" placeholder="E.g John Doe" />
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="email">EMAIL ADDRESS</label>
