@@ -9,22 +9,23 @@ export default function Login() {
   const [error, setError] = useState('');
   
   const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
 
-try {
+    try {
       const data = await loginUser(email, password);
 
       const token = data.token || (data.data && data.data.token);
       
-
       const actualUsername = data.username || (data.user && data.user.username) || (data.data && data.data.username) || (data.data && data.data.user && data.data.user.username) || "Eco-Warrior";
 
       if (token) {
         localStorage.setItem('token', token);
         localStorage.setItem('username', actualUsername); 
+        
+        // 🌟 ADD THIS EXACT LINE RIGHT HERE:
+        localStorage.setItem('email', email); 
       }
 
       navigate('/'); 

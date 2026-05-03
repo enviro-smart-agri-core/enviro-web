@@ -45,3 +45,70 @@ export const registerUser = async (username, email, password, name) => {
 
     return data;
 };
+
+// Add this to the bottom of src/api/auth.js
+
+// src/api/auth.js
+
+export const updateProfile = async (token, username, email) => {
+    // Replace '/update' with your actual backend endpoint
+    const response = await fetch(`${BASE_URL}/update`, {
+        method: 'PUT', 
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ username, email }) // Passing the new data
+    });
+
+    // 🌟 THE FIX: Read as text first to prevent the JSON crash
+    const rawText = await response.text();
+    
+    if (!rawText) {
+        if (!response.ok) throw new Error("Server returned an empty error.");
+        return { message: "Success" }; // Fake a success object if backend sends nothing
+    }
+
+    let data;
+    try {
+        data = JSON.parse(rawText);
+    } catch (e) {
+        // If it fails to parse, the backend probably just sent plain text!
+        if (!response.ok) throw new Error(rawText);
+        return { message: rawText }; 
+    }
+
+    if (!response.ok) throw new Error(data.message || 'Failed to update profile.');
+    return data;
+};
+
+export const updatePassword = async (token, currentPassword, newPassword) => {
+    // Replace '/password' with your actual backend endpoint
+    const response = await fetch(`${BASE_URL}/password`, {
+        method: 'PUT',
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ currentPassword, newPassword })
+    });
+
+    // 🌟 THE FIX: Read as text first
+    const rawText = await response.text();
+    
+    if (!rawText) {
+        if (!response.ok) throw new Error("Server returned an empty error.");
+        return { message: "Success" };
+    }
+
+    let data;
+    try {
+        data = JSON.parse(rawText);
+    } catch (e) {
+        if (!response.ok) throw new Error(rawText);
+        return { message: rawText }; 
+    }
+
+    if (!response.ok) throw new Error(data.message || 'Failed to change password.');
+    return data;
+};
