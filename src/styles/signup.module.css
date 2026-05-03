@@ -1,4 +1,3 @@
-/* first main color pallete which i forgot in the login css */
 :root {
 
     --balsy-white: #ffffff;
@@ -19,12 +18,7 @@
     --radioactive-7oda: rgba(209, 239, 240, 0.4);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
+
 
 .back-btn {
     position: absolute;
@@ -38,12 +32,12 @@
     font-weight: 600;
     font-size: 0.95rem;
     transition: transform 0.2s ease, color 0.2s ease;
-    z-index: 10; /* Ensures it stays clickable above everything */
+    z-index: 10;
 }
 
 .back-btn:hover {
     color: var(--hoda-greenary);
-    transform: translateX(-4px); /* Satisfying little slide to the left */
+    transform: translateX(-4px);
 }
 
 body {
@@ -58,7 +52,8 @@ body {
     width: 100%;
 }
 
-.left-box, .right-box {
+.left-box,
+.right-box {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -171,7 +166,7 @@ form {
 }
 
 
-/* the OR with umm yk these lines */
+
 
 .ORSHI {
     display: flex;
@@ -207,7 +202,7 @@ form {
 }
 
 
-/* google button i guess it works? */
+
 
 .gglbtn {
     display: flex;

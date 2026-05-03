@@ -5,7 +5,7 @@ import { updateProfile, updatePassword } from '../api/auth';
 import { useAuth } from '../hooks/useAuth';
 import { fetchWeather } from '../api/weather'; 
 
-// 🌟 Added Droplets and Leaf for the Home view icons!
+
 import { 
   LayoutDashboard, Cpu, Scan, Lock, ShoppingBag, Smartphone, 
   User, ShieldCheck, Trophy, Droplet, Droplets, Wind, Thermometer, Sprout, Leaf,
@@ -102,7 +102,7 @@ export default function Dashboard() {
   return (
     <div className={styles.wrapper}>
       
-      {/* SIDEBAR */}
+
       <nav className={styles.sidebar}>
         <div className={styles.name}>
           <img src="/assets/leaf.png" alt="" className={styles['brand-logo']} /> enviro
@@ -130,7 +130,7 @@ export default function Dashboard() {
         </div>
       </nav>
 
-      {/* MAIN CONTAINER */}
+
       <div className={styles.container}>
         <header className={styles.header}>
           <div className={styles.headertext}>
@@ -142,7 +142,7 @@ export default function Dashboard() {
           </button>
         </header>
 
-        {/* VIEW 1: HOME */}
+
         <div className={`${styles['app-view']} ${activeView === 'view-home' ? styles.active : ''}`}>
           <div className={styles.grid}>
             <div className={`${styles.card} ${styles['card-full']}`}>
@@ -166,7 +166,7 @@ export default function Dashboard() {
               </div>
             </div>
             
-            {/* 🌟 NEW: Icons added to the data cards */}
+
             <div className={styles.card}>
               <span className={styles.label}>Water Saved</span>
               <div className={styles['water-val']} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -184,7 +184,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* 🌟 VIEW 2: SENSORS (Partial Lock Design) */}
+
         <div className={`${styles['app-view']} ${activeView === 'view-sensors' ? styles.active : ''}`}>
           <div style={{ maxWidth: '1000px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
             
@@ -195,25 +195,24 @@ export default function Dashboard() {
               </div>
               
               <div className={styles['readings-gridss']}>
-                {/* UNLOCKED: Moisture */}
                 <div className={styles['reading-samboxa']}>
                   <span className={styles.label} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px' }}><Droplet size={14} /> Moisture</span>
                   <div className={styles['reading-value']}>42%</div>
                 </div>
 
-                {/* UNLOCKED: Temperature */}
+
                 <div className={styles['reading-samboxa']}>
                   <span className={styles.label} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px' }}><Thermometer size={14} /> Temp</span>
                   <div className={styles['reading-val']}>28°C</div>
                 </div>
 
-                {/* LOCKED: Humidity */}
+
                 <div className={styles['reading-samboxa']} style={{ position: 'relative', overflow: 'hidden' }}>
                   <div style={{ filter: 'blur(5px)', opacity: 0.4, userSelect: 'none' }}>
                     <span className={styles.label} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px' }}><Wind size={14} /> Humidity</span>
                     <div className={styles['reading-val']}>--%</div>
                   </div>
-                  {/* Overlay Click Target */}
+
                   <div 
                     onClick={() => setModal({ isOpen: true, featureName: 'Advanced Telemetry' })}
                     style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: 'rgba(255,255,255,0.1)' }}
@@ -222,13 +221,13 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                {/* LOCKED: Soil Status */}
+
                 <div className={styles['reading-samboxa']} style={{ background: 'var(--mint-whisper)', position: 'relative', overflow: 'hidden' }}>
                   <div style={{ filter: 'blur(5px)', opacity: 0.4, userSelect: 'none' }}>
                     <span className={styles.label} style={{ marginBottom: '5px', color: 'var(--forest-teal)', display: 'flex', alignItems: 'center', gap: '6px' }}><Sprout size={14} /> Soil Status</span>
                     <div className={styles['reading-val']} style={{ color: 'var(--forest-teal)', display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle size={20} /> OK</div>
                   </div>
-                  {/* Overlay Click Target */}
+
                   <div 
                     onClick={() => setModal({ isOpen: true, featureName: 'AI Soil Diagnostics' })}
                     style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: 'rgba(255,255,255,0.1)' }}
@@ -262,7 +261,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* VIEW 3: MAIN PROFILE */}
+
         <div className={`${styles['app-view']} ${activeView === 'view-profile' ? styles.active : ''}`}>
           <div className={styles['profile-header-card']}>
             <div className={styles['big-icon']}><User size={40} /></div>
@@ -284,7 +283,7 @@ export default function Dashboard() {
 
           <h3 className={styles['list-section-title']}>Preferences</h3>
           <div className={styles['settings-list']}>
-            {/* 🌟 NEW: About Us button now routes to the new page! */}
+
             <div className={styles['settings-item']} onClick={() => setActiveView('view-about')}>
               <div className={styles['settings-item-left']}><Info size={18} /> About us</div><div className={styles['settings-item-right']}><ChevronRight size={18} /></div>
             </div>
@@ -294,7 +293,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* VIEW 4: MANAGE PROFILE */}
+
         <div className={`${styles['app-view']} ${activeView === 'view-edit-profile' ? styles.active : ''}`}>
           <form className={styles.card} style={{ maxWidth: '600px' }} onSubmit={handleProfileSubmit}>
             <h2 style={{ color: 'var(--dark-evergreen)', marginBottom: '10px' }}>Edit Details</h2>
@@ -331,7 +330,7 @@ export default function Dashboard() {
           </form>
         </div>
 
-        {/* VIEW 5: SECURITY */}
+
         <div className={`${styles['app-view']} ${activeView === 'view-security' ? styles.active : ''}`}>
           <form className={styles.card} style={{ maxWidth: '600px' }} onSubmit={handlePasswordSubmit}>
             <h2 style={{ color: 'var(--dark-evergreen)', marginBottom: '10px' }}>Change Password</h2>
@@ -370,7 +369,7 @@ export default function Dashboard() {
           </form>
         </div>
 
-        {/* 🌟 VIEW 6: ABOUT US PAGE */}
+
         <div className={`${styles['app-view']} ${activeView === 'view-about' ? styles.active : ''}`}>
           <div className={styles.card} style={{ maxWidth: '800px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
@@ -395,7 +394,7 @@ export default function Dashboard() {
 
       </div>
 
-      {/* MODAL */}
+
       <div className={`${styles['modal-overlay']} ${modal.isOpen ? styles.active : ''}`} onClick={(e) => { if(e.target.className.includes('modal-overlay')) setModal({ isOpen: false, featureName: '' })}}>
         <div className={styles['modal-content']}>
           <div className={styles['modal-icon']}><Lock size={32} /></div>

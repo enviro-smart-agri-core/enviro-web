@@ -6,7 +6,6 @@ import { Mail, Phone, MapPin } from 'lucide-react'; // 🌟 Converted your icons
 export default function Contact() {
   return (
     <main className={styles.wrapper}>
-      {/* Hero Section */}
       <section className={styles.firstPart}>
         <div className={styles.firstPartContent}>
           <span className={styles.smallbox}>INQUIRY & CONNECTION</span>
@@ -14,19 +13,18 @@ export default function Contact() {
           <p>Our Agents are ready to assist you in cultivating your digital landscape. Reach out for technical support, partnership inquiries, or general stewardship questions.</p>
         </div>
         <div className={styles.illImage}>
-          {/* Ensure these images are in your public/assets folder! */}
+
           <img src="/assets/Contact_us-bro_1.png" alt="People interacting with digital communication devices" />
         </div>
       </section>
 
-      {/* Quote Section */}
+
       <section className={styles.underTopQuote}>
         <h2>“Your Opinion Matters To Us”</h2>
       </section>
 
-      {/* Contact Section */}
+
       <section className={styles.contactSection}>
-        {/* Support Info Panel */}
         <div className={styles.info}>
           <h3>Enviro Support</h3>
 
@@ -70,7 +68,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Contact Form Panel */}
         <div className={styles.contactForm}>
           <form onSubmit={(e) => e.preventDefault()}>
             <div className={styles.formRow}>
@@ -104,7 +101,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
       <section className={styles.newsletter}>
         <div className={styles.newsletterCard}>
           <div className={styles.newsletterContent}>

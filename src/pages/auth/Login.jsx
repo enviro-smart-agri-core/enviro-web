@@ -23,8 +23,6 @@ const handleLogin = async (e) => {
       if (token) {
         localStorage.setItem('token', token);
         localStorage.setItem('username', actualUsername); 
-        
-        // 🌟 ADD THIS EXACT LINE RIGHT HERE:
         localStorage.setItem('email', email); 
       }
 

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/home.module.css';
-// 🌟 IMPORT YOUR NEW HOOK
 import { useAuth } from '../hooks/useAuth';
 
 export default function Header() {
-  // 🌟 CALL THE HOOK ONCE TO GET EVERYTHING
+
   const { isLoggedIn, username, logout } = useAuth();
 
   return (

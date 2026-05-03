@@ -1,7 +1,6 @@
 // src/api/weather.js
 
-// Safe fallback coordinates just in case the user hits "Block"
-const FALLBACK_LAT = 31.2001; 
+const FALLBACK_LAT = 31.2001;
 const FALLBACK_LON = 29.9187;
 
 const getUserLocation = () => {
@@ -10,7 +9,7 @@ const getUserLocation = () => {
       resolve({ lat: FALLBACK_LAT, lon: FALLBACK_LON });
       return;
     }
-    // 🌟 Asks the browser for the exact location
+
     navigator.geolocation.getCurrentPosition(
       (position) => resolve({ lat: position.coords.latitude, lon: position.coords.longitude }),
       (error) => resolve({ lat: FALLBACK_LAT, lon: FALLBACK_LON }), // User blocked it
@@ -23,30 +22,29 @@ export const fetchWeather = async () => {
   try {
     const { lat, lon } = await getUserLocation();
 
-    // 🌟 1. Fetch Weather (Added 'is_day' to track day/night!)
+
     const weatherRes = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,is_day&timezone=auto`
     );
     if (!weatherRes.ok) throw new Error("Failed to fetch weather");
     const weatherData = await weatherRes.json();
 
-    // 🌟 2. Fetch City Name (Reverse Geocoding magic)
+
     const geoRes = await fetch(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
     );
-    
+
     let city = "Unknown Location";
     if (geoRes.ok) {
-       const geoData = await geoRes.json();
-       // Grabs the most accurate city/locality name it can find
-       city = geoData.city || geoData.locality || geoData.principalSubdivision || "Unknown Location";
+      const geoData = await geoRes.json();
+      city = geoData.city || geoData.locality || geoData.principalSubdivision || "Unknown Location";
     }
 
     const temp = Math.round(weatherData.current.temperature_2m);
     const code = weatherData.current.weather_code;
-    const isDay = weatherData.current.is_day === 1; // True if day, False if night
+    const isDay = weatherData.current.is_day === 1;
 
-    // 🌟 3. Translate codes to conditions and Day/Night icons
+
     let condition = "Clear Sky";
     let iconType = isDay ? "sun" : "moon";
 
@@ -61,6 +59,6 @@ export const fetchWeather = async () => {
 
   } catch (error) {
     console.error("Weather API Error:", error);
-    return { temp: "--", condition: "Offline", iconType: "cloud", city: "Offline" }; 
+    return { temp: "--", condition: "Offline", iconType: "cloud", city: "Offline" };
   }
 };

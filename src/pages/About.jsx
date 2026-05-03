@@ -8,7 +8,6 @@ export default function About() {
   return (
     <main className={styles.wrapper}>
       
-      {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className={styles.aboutContent}>
           <span className={styles.smallbox}>OUR STORY</span>
@@ -21,7 +20,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mission Section */}
       <section className={styles.missionSection}>
         <div className={styles.missionText}>
           <h2>Our Mission</h2>
@@ -36,12 +34,10 @@ export default function About() {
           </p>
         </div>
         <div className={styles.missionImage}>
-          {/* Make sure to drop this image into your public/assets/ folder! */}
           <img src="/assets/261325a697d7dd6467fd816a1216b97f.png" alt="Illustration of a digital greenhouse" />
         </div>
       </section>
 
-      {/* Core Values Section */}
       <section className={styles.coreSection}>
         <h2>Our Vision for the Future</h2>
         <div className={styles.valuesGrid}>
@@ -67,7 +63,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className={styles.ctaSection}>
         <h2>Ready to grow smarter, together?</h2>
         <Link to="/signup" className={styles.btnPrimary}>

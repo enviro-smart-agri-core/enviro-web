@@ -1,17 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    background-color: #ffffff;
-}
 
-/* --- Back Button --- */
 .back-btn {
     position: absolute;
     top: 2rem;
@@ -25,13 +13,11 @@ body {
     font-size: 0.95rem;
     transition: transform 0.2s ease, color 0.2s ease;
     z-index: 10;
-    /* Ensures it stays clickable above everything */
 }
 
 .back-btn:hover {
     color: var(--hoda-greenary);
     transform: translateX(-4px);
-    /* Satisfying little slide to the left */
 }
 
 

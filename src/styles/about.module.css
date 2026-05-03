@@ -1,239 +1,271 @@
-/* src/styles/about.module.css */
+
 
 .wrapper {
-  --primary-green: #144f36;
-  --form-bg-green: #51856c;
-  --button-green: #0a3a2a;
-  --light-green-bg: #eaf6ee;
-  --badge-green: #d1ebd8;
-  --text-dark: #333333;
-  --text-muted: #555555;
-  --white: #ffffff;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+    --primary-green: #144f36;
+    --form-bg-green: #51856c;
+    --button-green: #0a3a2a;
+    --light-green-bg: #eaf6ee;
+    --badge-green: #d1ebd8;
+    --text-dark: #333333;
+    --text-muted: #555555;
+    --white: #ffffff;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
 
-  font-family: var(--font-sans);
-  color: var(--text-dark);
-  background-color: var(--white);
-  line-height: 1.6;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 5vw;
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 5vw;
 }
 
-/* =========================================
-ANIMATIONS
-========================================= */
+
 @keyframes slideUpFade {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(20, 79, 54, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(20, 79, 54, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(20, 79, 54, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(20, 79, 54, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(20, 79, 54, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(20, 79, 54, 0);
+    }
 }
 
 /* 🌟 Renamed duplicate IDs to specific classes */
 .heroSection {
-  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  text-align: center;
-  padding: 6vw 4vw;
-  margin-bottom: 4vw;
-  background-color: var(--light-green-bg);
-  border-radius: 24px;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    text-align: center;
+    padding: 6vw 4vw;
+    margin-bottom: 4vw;
+    background-color: var(--light-green-bg);
+    border-radius: 24px;
 }
 
 .missionSection {
-  opacity: 0;
-  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-  display: flex;
-  align-items: center;
-  gap: 5vw;
-  padding: 4vw;
-  background-color: #f9fbf9;
-  border-radius: 24px;
-  margin-bottom: 6vw;
+    opacity: 0;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    padding: 4vw;
+    background-color: #f9fbf9;
+    border-radius: 24px;
+    margin-bottom: 6vw;
 }
 
 .coreSection {
-  opacity: 0;
-  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-  margin-bottom: 6vw;
-  text-align: center;
+    opacity: 0;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    margin-bottom: 6vw;
+    text-align: center;
 }
 
 .ctaSection {
-  opacity: 0;
-  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-  background-color: var(--form-bg-green);
-  color: var(--white);
-  text-align: center;
-  padding: 5vw;
-  border-radius: 24px;
-  margin-bottom: 4vw;
+    opacity: 0;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    background-color: var(--form-bg-green);
+    color: var(--white);
+    text-align: center;
+    padding: 5vw;
+    border-radius: 24px;
+    margin-bottom: 4vw;
 }
 
-/* --- Hero Details --- */
+
 .aboutContent {
-  max-width: 800px;
-  margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .smallbox {
-  display: inline-block;
-  background-color: var(--badge-green);
-  color: var(--primary-green);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 8px 16px;
-  border-radius: 20px;
-  margin-bottom: 20px;
+    display: inline-block;
+    background-color: var(--badge-green);
+    color: var(--primary-green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 .heroSection h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(3rem, 5vw, 5.5rem);
-  font-style: italic;
-  color: var(--primary-green);
-  line-height: 1.1;
-  margin-bottom: 20px;
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-style: italic;
+    color: var(--primary-green);
+    line-height: 1.1;
+    margin-bottom: 20px;
 }
 
 .heroSection p {
-  color: var(--text-muted);
-  font-size: clamp(1rem, 1.2vw, 1.3rem);
+    color: var(--text-muted);
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
 }
 
-/* --- Mission Details --- */
-.missionText { flex: 1; }
+
+.missionText {
+    flex: 1;
+}
 
 .missionText h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-style: italic;
-  color: var(--primary-green);
-  margin-bottom: 24px;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-style: italic;
+    color: var(--primary-green);
+    margin-bottom: 24px;
 }
 
 .missionText p {
-  color: var(--text-dark);
-  font-size: clamp(1rem, 1.1vw, 1.15rem);
-  margin-bottom: 16px;
+    color: var(--text-dark);
+    font-size: clamp(1rem, 1.1vw, 1.15rem);
+    margin-bottom: 16px;
 }
 
 .missionImage {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  transition: transform 0.5s ease;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease;
 }
 
-.missionImage:hover { transform: scale(1.02); }
+.missionImage:hover {
+    transform: scale(1.02);
+}
 
 .missionImage img {
-  max-width: 100%;
-  width: 400px;
-  border-radius: 16px;
+    max-width: 100%;
+    width: 400px;
+    border-radius: 16px;
 }
 
-/* --- Core Vision Details --- */
+
 .coreSection h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-style: italic;
-  color: var(--primary-green);
-  margin-bottom: 4vw;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-style: italic;
+    color: var(--primary-green);
+    margin-bottom: 4vw;
 }
 
 .valuesGrid {
-  display: flex;
-  gap: 2vw;
-  justify-content: center;
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
 }
 
 .valueCards {
-  flex: 1;
-  background-color: var(--white);
-  padding: 3vw;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  text-align: center;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+    flex: 1;
+    background-color: var(--white);
+    padding: 3vw;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .valueCards:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .icon {
-  background-color: var(--light-green-bg);
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-green);
-  margin: 0 auto 24px auto;
-  transition: transform 0.3s ease;
+    background-color: var(--light-green-bg);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-green);
+    margin: 0 auto 24px auto;
+    transition: transform 0.3s ease;
 }
 
 .valueCards:hover .icon {
-  animation: pulseGlow 1.5s infinite;
-  transform: scale(1.1);
+    animation: pulseGlow 1.5s infinite;
+    transform: scale(1.1);
 }
 
 .valueCards h3 {
-  font-size: 1.3rem;
-  color: var(--primary-green);
-  margin-bottom: 12px;
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    margin-bottom: 12px;
 }
 
 .valueCards p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
+    font-size: 0.95rem;
+    color: var(--text-muted);
 }
 
-/* --- CTA Details --- */
+
 .ctaSection h2 {
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-style: italic;
-  margin-bottom: 30px;
-  font-weight: 400;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-style: italic;
+    margin-bottom: 30px;
+    font-weight: 400;
 }
 
 .btnPrimary {
-  display: inline-block;
-  background-color: var(--button-green);
-  color: var(--white);
-  text-decoration: none;
-  padding: 16px 32px;
-  border-radius: 30px;
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-block;
+    background-color: var(--button-green);
+    color: var(--white);
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btnPrimary:hover {
-  background-color: #000000;
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: #000000;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* =========================================
-RESPONSIVE MEDIA QUERIES
-========================================= */
+
 @media (max-width: 992px) {
-  .missionSection { flex-direction: column; text-align: center; }
-  .valuesGrid { flex-direction: column; gap: 20px; }
-  .valueCards { padding: 40px 20px; }
+    .missionSection {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .valuesGrid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .valueCards {
+        padding: 40px 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  .wrapper { padding: 20px 5vw; }
-  .heroSection, .missionSection, .ctaSection { padding: 40px 20px; }
+    .wrapper {
+        padding: 20px 5vw;
+    }
+
+    .heroSection,
+    .missionSection,
+    .ctaSection {
+        padding: 40px 20px;
+    }
 }
