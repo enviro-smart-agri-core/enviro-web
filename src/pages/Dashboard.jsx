@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/userdashboard.module.css'; 
 import { updateProfile, updatePassword } from '../api/auth'; 
-
-// 🌟 Import your new hook!
 import { useAuth } from '../hooks/useAuth';
+import { fetchWeather } from '../api/weather'; 
 
+// 🌟 Added Droplets and Leaf for the Home view icons!
 import { 
   LayoutDashboard, Cpu, Scan, Lock, ShoppingBag, Smartphone, 
-  User, ShieldCheck, CloudSun, Trophy, Droplet, Wind, 
-  Thermometer, Sprout, CheckCircle, WifiOff, Clock, Plus, 
-  ChevronRight, Info, Monitor, LogOut
+  User, ShieldCheck, Trophy, Droplet, Droplets, Wind, Thermometer, Sprout, Leaf,
+  CheckCircle, WifiOff, Clock, Plus, ChevronRight, Info, Monitor, LogOut,
+  Sun, Moon, Cloud, CloudSun, CloudMoon, CloudRain, CloudLightning, CloudSnow 
 } from 'lucide-react';
 
 export default function Dashboard() {
-  // 🌟 One line grabs everything safely!
-  const { token, email, username, fullName, logout } = useAuth();
+  const navigate = useNavigate();
+  const { token, email, username, logout } = useAuth();
 
   const [activeView, setActiveView] = useState('view-home');
   const [modal, setModal] = useState({ isOpen: false, featureName: '' });
 
-  // 🌟 Using the hook variables to set the initial form state
+  const [weather, setWeather] = useState({ temp: '--', condition: 'Locating...', iconType: 'cloud-sun', city: 'Locating...' });
+
   const [editUsername, setEditUsername] = useState(username);
   const [editEmail, setEditEmail] = useState(email);
   const [currentPass, setCurrentPass] = useState('');
@@ -27,30 +29,50 @@ export default function Dashboard() {
   const [profileMsg, setProfileMsg] = useState(''); 
   const [securityMsg, setSecurityMsg] = useState(''); 
 
+  useEffect(() => {
+    const loadWeather = async () => {
+      const data = await fetchWeather();
+      setWeather(data);
+    };
+    loadWeather();
+  }, []);
+
   const getHeaderInfo = () => {
     switch (activeView) {
-      // 🌟 Fixed the variable name here!
       case 'view-home': return { title: 'Farm Overview', subtitle: `Read-only web access. Connected to ${username}'s node.` };
       case 'view-sensors': return { title: 'Sensors', subtitle: 'Monitor your farm devices securely.' };
       case 'view-profile': return { title: 'Profile', subtitle: 'Manage your account settings.' };
       case 'view-edit-profile': return { title: 'Manage Profile', subtitle: 'Update your personal details.' };
       case 'view-security': return { title: 'Security', subtitle: 'Update your password.' };
+      case 'view-about': return { title: 'About Enviro', subtitle: 'Our story and mission.' }; // 🌟 NEW: About Page Title
       default: return { title: '', subtitle: '' };
     }
   };
 
   const { title, subtitle } = getHeaderInfo();
-//assuming 7oda will add change and forget pass in the backend
+
+  const renderWeatherIcon = () => {
+    switch (weather.iconType) {
+      case 'sun': return <Sun size={40} color="#f59e0b" style={{ marginBottom: '10px' }} />;
+      case 'moon': return <Moon size={40} color="#94a3b8" style={{ marginBottom: '10px' }} />;
+      case 'cloud': return <Cloud size={40} color="#9ca3af" style={{ marginBottom: '10px' }} />;
+      case 'cloud-sun': return <CloudSun size={40} color="#f59e0b" style={{ marginBottom: '10px' }} />;
+      case 'cloud-moon': return <CloudMoon size={40} color="#94a3b8" style={{ marginBottom: '10px' }} />;
+      case 'rain': return <CloudRain size={40} color="#3b82f6" style={{ marginBottom: '10px' }} />;
+      case 'lightning': return <CloudLightning size={40} color="#8b5cf6" style={{ marginBottom: '10px' }} />;
+      case 'snow': return <CloudSnow size={40} color="#60a5fa" style={{ marginBottom: '10px' }} />;
+      default: return <CloudSun size={40} color="#f59e0b" style={{ marginBottom: '10px' }} />;
+    }
+  };
+
   const handleProfileSubmit = async (e) => {
     e.preventDefault();
     setProfileMsg("Saving...");
     try {
       await updateProfile(token, editUsername, editEmail);
-      
       localStorage.setItem('username', editUsername);
       localStorage.setItem('email', editEmail);
-      
-      setProfileMsg("Profile updated successfully! ");
+      setProfileMsg("Profile updated successfully! ✅");
       setTimeout(() => {
         setProfileMsg('');
         setActiveView('view-profile');
@@ -65,7 +87,7 @@ export default function Dashboard() {
     setSecurityMsg("Updating...");
     try {
       await updatePassword(token, currentPass, newPass);
-      setSecurityMsg("Password secured! ");
+      setSecurityMsg("Password secured! 🔒");
       setCurrentPass('');
       setNewPass('');
       setTimeout(() => {
@@ -96,7 +118,7 @@ export default function Dashboard() {
           <button className={`${styles['navigation-item']} ${styles.noaccess}`} onClick={() => setModal({ isOpen: true, featureName: 'AI Disease Scanning' })}>
             <div className={styles['nav-left']}><Scan size={20} /> Scan</div><Lock size={14} />
           </button>
-          <button className={`${styles['navigation-item']} ${styles.noaccess}`} onClick={() => setModal({ isOpen: true, featureName: 'Shop' })}>
+          <button className={`${styles['navigation-item']} ${styles.noaccess}`} onClick={() => setModal({ isOpen: true, featureName: 'Supply Shop' })}>
             <div className={styles['nav-left']}><ShoppingBag size={20} /> Shop</div><Lock size={14} />
           </button>
         </div>
@@ -128,29 +150,115 @@ export default function Dashboard() {
               <div className={styles['weather-flex']}>
                 <div>
                   <div className={styles['safe-status']}><ShieldCheck color="var(--emerald-green)" size={32} /> Safe</div>
-                  <p style={{ color: 'var(--text-muted)', fontWeight: 500, marginTop: '5px' }}>Alexandria</p>
+                  <p style={{ color: 'var(--text-muted)', fontWeight: 500, marginTop: '5px' }}>{weather.city}</p>
                 </div>
+                
                 <div className={styles.temp}>
-                  <CloudSun size={40} color="#f59e0b" style={{ marginBottom: '10px' }} />
-                  <h2 style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--dark-evergreen)' }}>19°C</h2>
-                  <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Clear Sky</p>
+                  {renderWeatherIcon()}
+                  <h2 style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--dark-evergreen)' }}>
+                    {weather.temp}°C
+                  </h2>
+                  <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>
+                    {weather.condition}
+                  </p>
                 </div>
+
               </div>
             </div>
-            <div className={styles.card}><span className={styles.label}>Water Saved</span><div className={styles['water-val']}>120 L</div></div>
-            <div className={styles.card}><span className={styles.label}>Crop Status</span><div className={styles['water-val']}>Day 45</div></div>
+            
+            {/* 🌟 NEW: Icons added to the data cards */}
+            <div className={styles.card}>
+              <span className={styles.label}>Water Saved</span>
+              <div className={styles['water-val']} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Droplets size={32} color="#3b82f6" /> 120 L
+              </div>
+            </div>
+            
+            <div className={styles.card}>
+              <span className={styles.label}>Crop Status</span>
+              <div className={styles['water-val']} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Leaf size={32} color="var(--emerald-green)" /> Day 45
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* VIEW 2: SENSORS */}
+        {/* 🌟 VIEW 2: SENSORS (Partial Lock Design) */}
         <div className={`${styles['app-view']} ${activeView === 'view-sensors' ? styles.active : ''}`}>
           <div style={{ maxWidth: '1000px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            
             <div className={styles.card}>
               <div className={styles['sensor-head']}>
                 <div className={styles['sensor-title']}><div className={styles['sensor-icon']}><Cpu size={20} /></div> Sensor A</div>
                 <div className={`${styles.badge} ${styles['badge-online']}`}><div className={styles.dot}></div> Online</div>
               </div>
+              
+              <div className={styles['readings-gridss']}>
+                {/* UNLOCKED: Moisture */}
+                <div className={styles['reading-samboxa']}>
+                  <span className={styles.label} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px' }}><Droplet size={14} /> Moisture</span>
+                  <div className={styles['reading-value']}>42%</div>
+                </div>
+
+                {/* UNLOCKED: Temperature */}
+                <div className={styles['reading-samboxa']}>
+                  <span className={styles.label} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px' }}><Thermometer size={14} /> Temp</span>
+                  <div className={styles['reading-val']}>28°C</div>
+                </div>
+
+                {/* LOCKED: Humidity */}
+                <div className={styles['reading-samboxa']} style={{ position: 'relative', overflow: 'hidden' }}>
+                  <div style={{ filter: 'blur(5px)', opacity: 0.4, userSelect: 'none' }}>
+                    <span className={styles.label} style={{ marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '6px' }}><Wind size={14} /> Humidity</span>
+                    <div className={styles['reading-val']}>--%</div>
+                  </div>
+                  {/* Overlay Click Target */}
+                  <div 
+                    onClick={() => setModal({ isOpen: true, featureName: 'Advanced Telemetry' })}
+                    style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: 'rgba(255,255,255,0.1)' }}
+                  >
+                    <div style={{ background: 'white', padding: '8px', borderRadius: '50%', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}><Lock size={18} color="var(--dark-evergreen)" /></div>
+                  </div>
+                </div>
+
+                {/* LOCKED: Soil Status */}
+                <div className={styles['reading-samboxa']} style={{ background: 'var(--mint-whisper)', position: 'relative', overflow: 'hidden' }}>
+                  <div style={{ filter: 'blur(5px)', opacity: 0.4, userSelect: 'none' }}>
+                    <span className={styles.label} style={{ marginBottom: '5px', color: 'var(--forest-teal)', display: 'flex', alignItems: 'center', gap: '6px' }}><Sprout size={14} /> Soil Status</span>
+                    <div className={styles['reading-val']} style={{ color: 'var(--forest-teal)', display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle size={20} /> OK</div>
+                  </div>
+                  {/* Overlay Click Target */}
+                  <div 
+                    onClick={() => setModal({ isOpen: true, featureName: 'AI Soil Diagnostics' })}
+                    style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', background: 'rgba(255,255,255,0.1)' }}
+                  >
+                    <div style={{ background: 'white', padding: '8px', borderRadius: '50%', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}><Lock size={18} color="var(--dark-evergreen)" /></div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div className={styles.card}>
+              <div className={styles['sensor-head']} style={{ marginBottom: '10px' }}>
+                <div className={styles['sensor-title']}>
+                  <div className={styles['sensor-icon']} style={{ background: '#f3f4f6', color: 'var(--text-muted)' }}><Cpu size={20} /></div> Sensor B
+                </div>
+                <div className={`${styles.badge} ${styles['badge-offline']}`} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><WifiOff size={14} /> Offline</div>
+              </div>
+              <div className={styles['offline-text']} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><Clock size={14} /> Last seen 3 hours ago</div>
+            </div>
+
+            <button className={styles['add-device']} onClick={() => setModal({ isOpen: true, featureName: 'Hardware Provisioning' })}>
+              <div style={{ width: '60px', height: '60px', background: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--forest-teal)', marginBottom: '15px', position: 'relative', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}>
+                <Plus size={28} />
+                <div style={{ position: 'absolute', top: '-5px', right: '-5px', background: 'var(--text-main)', color: 'white', padding: '4px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Lock size={10} />
+                </div>
+              </div>
+              <h3 style={{ color: 'var(--dark-evergreen)', fontWeight: 900, fontSize: '1.2rem', marginBottom: '5px' }}>Add Device</h3>
+              <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>Pair a new sensor to start monitoring your farm</p>
+            </button>
           </div>
         </div>
 
@@ -159,8 +267,8 @@ export default function Dashboard() {
           <div className={styles['profile-header-card']}>
             <div className={styles['big-icon']}><User size={40} /></div>
             <div>
-              <h2 style={{ fontWeight: 900 }}>{editUsername}</h2>
-              <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{editEmail}</p>
+              <h2 style={{ fontWeight: 900 }}>{username}</h2>
+              <p style={{ color: 'var(--text-muted)', fontWeight: 500 }}>{email}</p>
             </div>
           </div>
 
@@ -176,8 +284,10 @@ export default function Dashboard() {
 
           <h3 className={styles['list-section-title']}>Preferences</h3>
           <div className={styles['settings-list']}>
-            <div className={styles['settings-item']}><div className={styles['settings-item-left']}><Info size={18} /> About us</div><div className={styles['settings-item-right']}><ChevronRight size={18} /></div></div>
-            {/* 🌟 Hook's logout function wired directly here */}
+            {/* 🌟 NEW: About Us button now routes to the new page! */}
+            <div className={styles['settings-item']} onClick={() => setActiveView('view-about')}>
+              <div className={styles['settings-item-left']}><Info size={18} /> About us</div><div className={styles['settings-item-right']}><ChevronRight size={18} /></div>
+            </div>
             <div className={styles['settings-item']} onClick={logout} style={{ color: '#ef4444', cursor: 'pointer' }}>
               <div className={styles['settings-item-left']} style={{ color: '#ef4444' }}><LogOut size={18} /> Logout</div>
             </div>
@@ -258,6 +368,29 @@ export default function Dashboard() {
               </div>
             </div>
           </form>
+        </div>
+
+        {/* 🌟 VIEW 6: ABOUT US PAGE */}
+        <div className={`${styles['app-view']} ${activeView === 'view-about' ? styles.active : ''}`}>
+          <div className={styles.card} style={{ maxWidth: '800px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+              <div style={{ width: '50px', height: '50px', background: 'var(--mint-whisper)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Leaf size={28} color="var(--forest-teal)" />
+              </div>
+              <h2 style={{ color: 'var(--dark-evergreen)', fontSize: '1.8rem', fontWeight: 900 }}>Enviro</h2>
+            </div>
+            
+            <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.05rem' }}>
+              What started as a graduation project by a dedicated team of developers in Alexandria has evolved into a mission to modernize urban agriculture. We recognized a massive gap between everyday nature and modern technology, so we built Enviro to bridge that divide.
+            </p>
+            <p style={{ color: 'var(--text-muted)', lineHeight: '1.8', marginBottom: '30px', fontSize: '1.05rem' }}>
+              By combining industrial edge nodes with intelligent AI diagnostics, our platform transforms any balcony or rooftop into a self-sustaining micro-farm. We automate irrigation, conserve municipal water, and optimize crop health—bringing the cloud directly to the dirt.
+            </p>
+            
+            <button className={styles['button-download']} style={{ background: '#f3f4f6', color: 'var(--text-main)', width: 'auto', padding: '12px 24px' }} onClick={() => setActiveView('view-profile')}>
+              Back to Profile
+            </button>
+          </div>
         </div>
 
       </div>
