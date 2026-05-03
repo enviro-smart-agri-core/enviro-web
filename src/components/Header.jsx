@@ -14,7 +14,7 @@ export default function Header() {
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="#">Contact</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
           <li><Link to="#">Products</Link></li>
         </ul>
       </nav>

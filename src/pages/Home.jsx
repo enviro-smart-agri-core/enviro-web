@@ -5,7 +5,7 @@ import kittenImg from '/assets/lmao.png';
 import firstImg from '/assets/firstImg.jpg';
 import dashboardImg from '/assets/image(1).png';
 import { ShieldCheck, Thermometer, Waves } from 'lucide-react';
-import { isLoggedIn } from '../utils/checker'; 
+import { isLoggedIn } from '../utils/checker(scrapped)'; 
 
 const Hero = () => {
   const loggedIn = isLoggedIn(); // Check auth status

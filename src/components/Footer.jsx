@@ -24,13 +24,7 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div className={styles['footer-col']}>
-        <h3>Community</h3>
-        <ul>
-          <li><Link to="/about">About us</Link></li>
-          <li><Link to="/events">Events</Link></li>
-        </ul>
-      </div>
+
       <div className={styles['footer-col']}>
         <h3>Contact Us</h3>
         <ul>

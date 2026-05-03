@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 
+import Contact from './pages/Contact';
 // 🌟 NEW PATHS
 import Login from './pages/auth/Login';
 import Register from './pages/auth/SignUp';
@@ -30,6 +31,7 @@ export default function App() {
         {/* Normal pages get the Header and Footer */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
 
         {/* Auth pages stand alone */}
@@ -38,6 +40,7 @@ export default function App() {
         
         {/* 🌟 THE FIX: The Dashboard MUST stand completely alone */}
         <Route path="/dashboard" element={<Dashboard />} />
+        
 
       </Routes>
     </Router>
