@@ -181,7 +181,7 @@ export default function Register() {
                     onClick={() => setStep(1)}
                     style={{ background: 'none', border: 'none', color: '#538d72', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem' }}
                   >
-                    ← Back to sign up form
+                    Back to sign up form
                   </button>
                 </p>
               </div>
