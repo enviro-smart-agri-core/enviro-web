@@ -1,9 +1,20 @@
 // src/pages/Contact.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/contact.module.css';
-import { Mail, Phone, MapPin } from 'lucide-react'; // 🌟 Converted your icons to React components!
+import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
+  const [subscribeEmail, setSubscribeEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  function handleSubscribe(e) {
+    e.preventDefault();
+    if (!subscribeEmail.trim()) return;
+    // TODO: wire up to real API
+    setSubscribed(true);
+    setSubscribeEmail('');
+  }
+
   return (
     <main className={styles.wrapper}>
       <section className={styles.firstPart}>
@@ -106,10 +117,23 @@ export default function Contact() {
           <div className={styles.newsletterContent}>
             <h2>Join the Journal.</h2>
             <p>Receive bi-weekly insights on agricultural innovation and digital sustainability, delivered directly to your field office.</p>
-            <form className={styles.subscribeForm} onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="steward@domain.com" required />
-              <button type="submit">Subscribe</button>
-            </form>
+            {subscribed ? (
+              <div className={styles.subscribeSuccess}>
+                <CheckCircle size={20} />
+                <span>You're in! Welcome to the Journal.</span>
+              </div>
+            ) : (
+              <form className={styles.subscribeForm} onSubmit={handleSubscribe}>
+                <input
+                  type="email"
+                  placeholder="steward@domain.com"
+                  value={subscribeEmail}
+                  onChange={(e) => setSubscribeEmail(e.target.value)}
+                  required
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+            )}
           </div>
         </div>
         <div className={styles.newsletterImage}>
