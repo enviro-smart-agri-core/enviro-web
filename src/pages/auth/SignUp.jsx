@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/signup.module.css';
 import { registerRequest, registerVerify } from '../../api/auth';
+import { isPasswordStrong } from '../../utils/passwordStrength';
+import PasswordChecklist from '../../components/PasswordChecklist';
 
 export default function Register() {
   // step 1 fields
@@ -22,6 +24,12 @@ export default function Register() {
   const handleRegisterRequest = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!isPasswordStrong(password)) {
+      setError('Please make sure your password meets all the requirements below.');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -110,6 +118,7 @@ export default function Register() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                <PasswordChecklist password={password} />
 
                 <button type="submit" className={styles['register-son']} disabled={loading}>
                   {loading ? 'Sending...' : 'Create Account'}

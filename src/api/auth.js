@@ -7,6 +7,11 @@ const BASE_URL = '/api/v1/auth';
 const safeJson = async (response) => {
     const rawText = await response.text();
 
+    // rate limited — tell the user to chill for a sec
+    if (response.status === 429) {
+        throw new Error('Too many attempts. Please wait a moment before trying again.');
+    }
+
     // empty body — ok if the request succeeded, error if it didn't
     if (!rawText || !rawText.trim()) {
         if (!response.ok) {

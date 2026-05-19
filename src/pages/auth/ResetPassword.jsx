@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import styles from '../../styles/login.module.css';
 import { resetPassword } from '../../api/auth';
+import { isPasswordStrong } from '../../utils/passwordStrength';
+import PasswordChecklist from '../../components/PasswordChecklist';
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -29,6 +31,12 @@ export default function ResetPassword() {
 
     if (newPassword !== confirmPassword) {
       setError('Passwords do not match.');
+      return;
+    }
+
+    // match backend validation: needs upper, lower, and digit
+    if (!isPasswordStrong(newPassword)) {
+      setError('Password must meet all the requirements shown below.');
       return;
     }
 
@@ -71,6 +79,7 @@ export default function ResetPassword() {
                   required
                   disabled={!userId || !token}
                 />
+                <PasswordChecklist password={newPassword} />
                 <input
                   className={styles['password-son']}
                   type="password"
@@ -80,6 +89,9 @@ export default function ResetPassword() {
                   required
                   disabled={!userId || !token}
                 />
+                <p style={{ fontSize: '0.8rem', color: '#777', textAlign: 'center', marginTop: '-0.5rem' }}>
+                  Password must contain uppercase, lowercase, and a number.
+                </p>
                 <button
                   type="submit"
                   className={styles['login-son']}
