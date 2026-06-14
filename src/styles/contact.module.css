@@ -1,5 +1,4 @@
-
-.wrapper {
+.ballknowledge {
   --primary-green: #144f36;
   --form-bg-green: #51856c;
   --button-green: #0a3a2a;
@@ -19,8 +18,6 @@
   margin: 0 auto;
   padding: 40px 5vw;
 }
-
-
 
 @keyframes slideUpFade {
   0% {
@@ -48,7 +45,7 @@
   }
 }
 
-.firstPart {
+.first {
   animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   display: flex;
   align-items: center;
@@ -60,7 +57,7 @@
   gap: 5vw;
 }
 
-.underTopQuote {
+.quote {
   opacity: 0;
   animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
   text-align: center;
@@ -68,7 +65,7 @@
   padding: 0 20px;
 }
 
-.contactSection {
+.contact {
   opacity: 0;
   animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
   display: flex;
@@ -79,7 +76,7 @@
   margin-bottom: 6vw;
 }
 
-.newsletter {
+.news {
   opacity: 0;
   animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
   display: flex;
@@ -89,44 +86,44 @@
 }
 
 .info,
-.contactForm,
-.newsletterCard {
+.form,
+.card {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 .info:hover,
-.contactForm:hover {
+.form:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.wrapper button {
+.ballknowledge button {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.formFooter button:hover {
+.footer button:hover {
   background-color: #000000 !important;
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.subscribeForm button:hover {
+.subscribe button:hover {
   background-color: #1a6645 !important;
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.method:hover .icon {
+.method:hover .img {
   animation: pulseGlow 1.5s infinite;
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
 
-.firstPartContent {
+.content {
   flex: 1;
 }
 
-.smallbox {
+.small {
   display: inline-block;
   background-color: var(--badge-green);
   color: var(--primary-green);
@@ -138,7 +135,7 @@
   margin-bottom: 20px;
 }
 
-.firstPart h1 {
+.first h1 {
   font-family: var(--font-serif);
   font-size: clamp(3rem, 5vw, 6rem);
   font-style: italic;
@@ -147,28 +144,28 @@
   margin-bottom: 20px;
 }
 
-.firstPart p {
+.first p {
   color: var(--text-muted);
   font-size: clamp(1rem, 1.2vw, 1.5rem);
 }
 
-.illImage {
+.artwork {
   flex: 1;
   display: flex;
   justify-content: flex-end;
   transition: transform 0.5s ease;
 }
 
-.illImage:hover {
+.artwork:hover {
   transform: scale(1.03);
 }
 
-.illImage img {
+.artwork img {
   max-width: 100%;
   height: auto;
 }
 
-.underTopQuote h2 {
+.quote h2 {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 4vw, 4rem);
   font-style: italic;
@@ -199,7 +196,7 @@
   cursor: default;
 }
 
-.icon {
+.img {
   background-color: var(--light-green-bg);
   width: 48px;
   height: 48px;
@@ -226,20 +223,20 @@
   word-break: break-word;
 }
 
-.supportCards {
+.support {
   display: flex;
   gap: 20px;
   margin-top: 40px;
 }
 
-.card {
+.avgball {
   flex: 1;
   padding: 2vw;
   border-radius: 16px;
   transition: transform 0.3s ease;
 }
 
-.card:hover {
+.avgball:hover {
   transform: translateY(-3px);
 }
 
@@ -287,7 +284,7 @@
   color: var(--primary-green);
 }
 
-.contactForm {
+.form {
   flex: 1.2;
   background-color: var(--form-bg-green);
   padding: 3vw;
@@ -295,19 +292,19 @@
   color: var(--white);
 }
 
-.formRow {
+.row {
   display: flex;
   gap: 20px;
 }
 
-.formGroup {
+.group {
   margin-bottom: 24px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.formGroup label {
+.group label {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -315,9 +312,9 @@
   letter-spacing: 0.05em;
 }
 
-.formGroup input,
-.formGroup select,
-.formGroup textarea {
+.group input,
+.group select,
+.group textarea {
   width: 100%;
   padding: 16px;
   border: none;
@@ -328,19 +325,19 @@
   transition: box-shadow 0.3s ease;
 }
 
-.formGroup input:focus,
-.formGroup select:focus,
-.formGroup textarea:focus {
+.group input:focus,
+.group select:focus,
+.group textarea:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
-.formGroup textarea {
+.group textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.formFooter {
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -348,13 +345,13 @@
   gap: 20px;
 }
 
-.formFooter p {
+.footer p {
   font-size: clamp(0.75rem, 0.9vw, 1rem);
   color: rgba(255, 255, 255, 0.8);
   max-width: 60%;
 }
 
-.formFooter button {
+.footer button {
   background-color: var(--button-green);
   color: var(--white);
   border: none;
@@ -365,7 +362,7 @@
   white-space: nowrap;
 }
 
-.newsletterCard {
+.card {
   flex: 1;
   background-color: var(--form-bg-green);
   color: var(--white);
@@ -373,7 +370,7 @@
   border-radius: 24px;
 }
 
-.newsletterContent h2 {
+.content h2 {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 3.5vw, 4rem);
   font-style: italic;
@@ -381,13 +378,13 @@
   font-weight: 400;
 }
 
-.newsletterContent p {
+.content p {
   font-size: clamp(0.9rem, 1.2vw, 1.4rem);
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.subscribeForm {
+.subscribe {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -397,11 +394,11 @@
   transition: box-shadow 0.3s ease;
 }
 
-.subscribeForm:focus-within {
+.subscribe:focus-within {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
-.subscribeForm input {
+.subscribe input {
   flex: 1;
   background: transparent;
   border: none;
@@ -411,7 +408,7 @@
   font-size: 1rem;
 }
 
-.subscribeForm button {
+.subscribe button {
   background-color: var(--button-green);
   color: var(--white);
   border: none;
@@ -424,7 +421,7 @@
   white-space: nowrap;
 }
 
-.subscribeSuccess {
+.success {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -437,95 +434,92 @@
   animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.newsletterImage {
+.artwork {
   flex: 1;
   display: flex;
   justify-content: flex-end;
   transition: transform 0.5s ease;
 }
 
-.newsletterImage:hover {
+.artwork:hover {
   transform: scale(1.03) rotate(1deg);
 }
 
-.newsletterImage img {
+.artwork img {
   max-width: 100%;
   height: auto;
 }
 
-
 @media (max-width: 992px) {
-
-  .firstPart,
-  .contactSection,
-  .newsletter {
+  .first,
+  .contact,
+  .news {
     flex-direction: column;
     padding: 6vw;
   }
 
-  .firstPartContent {
+  .content {
     text-align: center;
   }
 
-  .firstPartContent .smallbox {
+  .content .small {
     margin-left: auto;
     margin-right: auto;
   }
 
-  .illImage,
-  .newsletterImage {
+  .artwork {
     justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .wrapper {
+  .ballknowledge {
     padding: 20px 5vw;
   }
 
-  .formRow {
+  .row {
     flex-direction: column;
     gap: 0;
   }
 
-  .formFooter {
+  .footer {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
   }
 
-  .formFooter p {
+  .footer p {
     max-width: 100%;
   }
 
-  .formFooter button {
+  .footer button {
     width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .underTopQuote {
+  .quote {
     margin: 50px 0;
   }
 
-  .supportCards {
+  .support {
     flex-direction: column;
   }
 
-  .subscribeForm {
+  .subscribe {
     flex-direction: column;
     background-color: transparent;
     padding: 0;
     gap: 10px;
   }
 
-  .subscribeForm input {
+  .subscribe input {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 30px;
     padding: 14px 20px;
   }
 
-  .subscribeForm button {
+  .subscribe button {
     width: 100%;
     padding: 14px;
   }

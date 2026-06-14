@@ -6,14 +6,12 @@ import { isPasswordStrong } from '../../utils/passwordStrength';
 import PasswordChecklist from '../../components/PasswordChecklist';
 
 export default function Register() {
-  // step 1 fields
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // otp step
-  const [step, setStep] = useState(1); // 1 = form, 2 = otp
+  const [step, setStep] = useState(1);
   const [otp, setOtp] = useState('');
 
   const [error, setError] = useState('');
@@ -34,7 +32,7 @@ export default function Register() {
 
     try {
       await registerRequest(username, email, password, name);
-      setStep(2); // move to otp screen
+      setStep(2);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -62,7 +60,7 @@ export default function Register() {
     setLoading(true);
     try {
       await registerRequest(username, email, password, name);
-      setError(''); // clear any old error
+      setError('');
       alert('A new OTP has been sent to your email.');
     } catch (err) {
       setError(err.message);
@@ -72,13 +70,13 @@ export default function Register() {
   };
 
   return (
-    <main className={styles.box}>
-      <div className={styles['left-box']}>
-        <Link to="/" className={styles['back-btn']}>
+    <main className={styles.ballknowledge}>
+      <div className={styles.left}>
+        <Link to="/" className={styles.back}>
           <i className="fi fi-rr-arrow-left"></i> Back to Home
         </Link>
 
-        <div className={styles['form-container']}>
+        <div className={styles.container}>
           {step === 1 ? (
             <>
               <h1>Register</h1>
@@ -87,7 +85,7 @@ export default function Register() {
 
               <form onSubmit={handleRegisterRequest}>
                 <input
-                  className={styles['input-son']}
+                  className={styles.input}
                   type="text"
                   placeholder="Full Name"
                   value={name}
@@ -95,7 +93,7 @@ export default function Register() {
                   required
                 />
                 <input
-                  className={styles['input-son']}
+                  className={styles.input}
                   type="text"
                   placeholder="Username"
                   value={username}
@@ -103,7 +101,7 @@ export default function Register() {
                   required
                 />
                 <input
-                  className={styles['input-son']}
+                  className={styles.input}
                   type="email"
                   placeholder="Email"
                   value={email}
@@ -111,7 +109,7 @@ export default function Register() {
                   required
                 />
                 <input
-                  className={styles['input-son']}
+                  className={styles.input}
                   type="password"
                   placeholder="Password"
                   value={password}
@@ -120,22 +118,22 @@ export default function Register() {
                 />
                 <PasswordChecklist password={password} />
 
-                <button type="submit" className={styles['register-son']} disabled={loading}>
+                <button type="submit" className={styles.register} disabled={loading}>
                   {loading ? 'Sending...' : 'Create Account'}
                 </button>
               </form>
 
-              <div className={styles.ORSHI}><span>OR</span></div>
+              <div className={styles.divider}><span>OR</span></div>
 
-              <div className={styles.gglbtn}>
+              <div className={styles.social}>
                 <p>Sign up using</p>
-                <button className={styles['google-btn']} type="button">
+                <button className={styles.google} type="button">
                   <img src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="Google Logo" />
                   <span>Google</span>
                 </button>
               </div>
 
-              <div className={styles['login-link']}>
+              <div className={styles.login}>
                 <p>Have account already? <Link to="/login">Sign in!</Link></p>
               </div>
             </>
@@ -150,7 +148,7 @@ export default function Register() {
 
               <form onSubmit={handleVerifyOtp}>
                 <input
-                  className={styles['input-son']}
+                  className={styles.input}
                   type="text"
                   placeholder="Enter OTP code"
                   value={otp}
@@ -158,12 +156,12 @@ export default function Register() {
                   maxLength={6}
                   required
                 />
-                <button type="submit" className={styles['register-son']} disabled={loading}>
+                <button type="submit" className={styles.register} disabled={loading}>
                   {loading ? 'Verifying...' : 'Verify & Continue'}
                 </button>
               </form>
 
-              <div className={styles['login-link']} style={{ marginTop: '1.5rem' }}>
+              <div className={styles.login} style={{ marginTop: '1.5rem' }}>
                 <p>
                   Didn&apos;t get the code?{' '}
                   <button
@@ -190,8 +188,8 @@ export default function Register() {
         </div>
       </div>
 
-      <div className={styles['right-box']}>
-        <div className={styles['right-content']}>
+      <div className={styles.right}>
+        <div className={styles.content}>
           <img src="/assets/image (ww1).png" alt="Globe Environment Illustration" />
           <h2>Environment is a two-way<br />street. You give it love, and it<br />gives you love back!</h2>
         </div>

@@ -27,13 +27,13 @@ export default function ForgotPassword() {
   };
 
   return (
-    <main className={styles.box}>
-      <div className={styles['left-box']}>
-        <Link to="/login" className={styles['back-btn']}>
+    <main className={styles.ballknowledge}>
+      <div className={styles.left}>
+        <Link to="/login" className={styles.back}>
           <i className="fi fi-rr-arrow-left"></i> Back to Login
         </Link>
 
-        <div className={styles['form-container']}>
+        <div className={styles.container}>
           {!success ? (
             <>
               <h1>Forgot Password</h1>
@@ -45,19 +45,19 @@ export default function ForgotPassword() {
 
               <form onSubmit={handleSubmit}>
                 <input
-                  className={styles['email-son']}
+                  className={styles.email}
                   type="email"
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <button type="submit" className={styles['login-son']} disabled={loading}>
+                <button type="submit" className={styles.login} disabled={loading}>
                   {loading ? 'Sending...' : 'Send Reset Link'}
                 </button>
               </form>
 
-              <div className={styles['signup-link']} style={{ marginTop: '1.5rem' }}>
+              <div className={styles.signup} style={{ marginTop: '1.5rem' }}>
                 <p>Remember your password? <Link to="/login">Sign in!</Link></p>
               </div>
             </>
@@ -70,12 +70,12 @@ export default function ForgotPassword() {
               </p>
               <button
                 type="button"
-                className={styles['login-son']}
+                className={styles.login}
                 onClick={() => navigate('/login')}
               >
                 Back to Login
               </button>
-              <div className={styles['signup-link']} style={{ marginTop: '1.5rem' }}>
+              <div className={styles.signup} style={{ marginTop: '1.5rem' }}>
                 <p>
                   Didn&apos;t receive it?{' '}
                   <button
@@ -92,8 +92,8 @@ export default function ForgotPassword() {
         </div>
       </div>
 
-      <div className={styles['right-box']}>
-        <div className={styles['right-content']}>
+      <div className={styles.right}>
+        <div className={styles.content}>
           <img src="/assets/image 2(1).png" alt="Plant and Wind Turbines Illustration" />
           <h2>The grass is always greener<br />on our side</h2>
         </div>

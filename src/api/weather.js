@@ -1,5 +1,3 @@
-// src/api/weather.js
-
 const FALLBACK_LAT = 31.2001;
 const FALLBACK_LON = 29.9187;
 
@@ -12,7 +10,7 @@ const getUserLocation = () => {
 
     navigator.geolocation.getCurrentPosition(
       (position) => resolve({ lat: position.coords.latitude, lon: position.coords.longitude }),
-      (error) => resolve({ lat: FALLBACK_LAT, lon: FALLBACK_LON }), // User blocked it
+      () => resolve({ lat: FALLBACK_LAT, lon: FALLBACK_LON }),
       { timeout: 10000 }
     );
   });

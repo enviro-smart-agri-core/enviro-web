@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import styles from '../../styles/login.module.css';
 import { resetPassword } from '../../api/auth';
@@ -9,21 +9,14 @@ export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // backend sends ?token=...&id=... in the reset email link
   const userId = searchParams.get('id') || '';
   const token = searchParams.get('token') || '';
 
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState((!userId || !token) ? 'Invalid or missing reset link. Please request a new one.' : '');
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (!userId || !token) {
-      setError('Invalid or missing reset link. Please request a new one.');
-    }
-  }, [userId, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +27,6 @@ export default function ResetPassword() {
       return;
     }
 
-    // match backend validation: needs upper, lower, and digit
     if (!isPasswordStrong(newPassword)) {
       setError('Password must meet all the requirements shown below.');
       return;
@@ -53,13 +45,13 @@ export default function ResetPassword() {
   };
 
   return (
-    <main className={styles.box}>
-      <div className={styles['left-box']}>
-        <Link to="/login" className={styles['back-btn']}>
+    <main className={styles.ballknowledge}>
+      <div className={styles.left}>
+        <Link to="/login" className={styles.back}>
           <i className="fi fi-rr-arrow-left"></i> Back to Login
         </Link>
 
-        <div className={styles['form-container']}>
+        <div className={styles.container}>
           {!success ? (
             <>
               <h1>Reset Password</h1>
@@ -71,7 +63,7 @@ export default function ResetPassword() {
 
               <form onSubmit={handleSubmit}>
                 <input
-                  className={styles['password-son']}
+                  className={styles.password}
                   type="password"
                   placeholder="New Password"
                   value={newPassword}
@@ -81,7 +73,7 @@ export default function ResetPassword() {
                 />
                 <PasswordChecklist password={newPassword} />
                 <input
-                  className={styles['password-son']}
+                  className={styles.password}
                   type="password"
                   placeholder="Confirm New Password"
                   value={confirmPassword}
@@ -94,7 +86,7 @@ export default function ResetPassword() {
                 </p>
                 <button
                   type="submit"
-                  className={styles['login-son']}
+                  className={styles.login}
                   disabled={loading || !userId || !token}
                 >
                   {loading ? 'Resetting...' : 'Reset Password'}
@@ -102,7 +94,7 @@ export default function ResetPassword() {
               </form>
 
               {(!userId || !token) && (
-                <div className={styles['signup-link']} style={{ marginTop: '1.5rem' }}>
+                <div className={styles.signup} style={{ marginTop: '1.5rem' }}>
                   <p>
                     <Link to="/forgot-password">Request a new reset link</Link>
                   </p>
@@ -118,7 +110,7 @@ export default function ResetPassword() {
               </p>
               <button
                 type="button"
-                className={styles['login-son']}
+                className={styles.login}
                 onClick={() => navigate('/login')}
               >
                 Go to Login
@@ -128,8 +120,8 @@ export default function ResetPassword() {
         </div>
       </div>
 
-      <div className={styles['right-box']}>
-        <div className={styles['right-content']}>
+      <div className={styles.right}>
+        <div className={styles.content}>
           <img src="/assets/image 2(1).png" alt="Plant and Wind Turbines Illustration" />
           <h2>The grass is always greener<br />on our side</h2>
         </div>

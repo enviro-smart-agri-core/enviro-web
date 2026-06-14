@@ -1,5 +1,4 @@
 :root {
-
     --balsy-white: #ffffff;
     --hoda-greenary: #538d72;
     --idk: #d1eff0;
@@ -18,9 +17,7 @@
     --radioactive-7oda: rgba(209, 239, 240, 0.4);
 }
 
-
-
-.back-btn {
+.back {
     position: absolute;
     top: 2rem;
     left: 2rem;
@@ -35,7 +32,7 @@
     z-index: 10;
 }
 
-.back-btn:hover {
+.back:hover {
     color: var(--hoda-greenary);
     transform: translateX(-4px);
 }
@@ -46,29 +43,29 @@ body {
     overflow-x: hidden;
 }
 
-.box {
+.ballknowledge {
     display: flex;
     min-height: 100vh;
     width: 100%;
 }
 
-.left-box,
-.right-box {
+.left,
+.right {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 3rem 2rem;
 }
 
-.left-box {
+.left {
     background-color: var(--balsy-white);
 }
 
-.right-box {
+.right {
     background-color: var(--hoda-greenary);
 }
 
-.form-container {
+.container {
     width: 100%;
     max-width: 380px;
     margin: auto;
@@ -77,7 +74,7 @@ body {
     align-items: center;
 }
 
-.right-content {
+.content {
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -88,17 +85,17 @@ body {
     max-width: 500px;
 }
 
-.right-content img {
+.content img {
     width: 100%;
     max-width: 360px;
     height: auto;
 }
 
-.right-content h2 br {
+.content h2 br {
     display: none;
 }
 
-.right-content h2 {
+.content h2 {
     font-size: 1.8rem;
     font-weight: 600;
     line-height: 1.5;
@@ -106,7 +103,7 @@ body {
     padding: 0 1rem;
 }
 
-.form-container h1 {
+.container h1 {
     font-size: 2.2rem;
     margin-bottom: 2rem;
     color: var(--color1);
@@ -119,7 +116,7 @@ form {
     gap: 1.2rem;
 }
 
-.input-son {
+.input {
     width: 100%;
     padding: 1rem 1.5rem;
     border-radius: 50px;
@@ -132,16 +129,16 @@ form {
     transition: all 0.3s ease;
 }
 
-.input-son::placeholder {
+.input::placeholder {
     color: var(--mint-tea);
 }
 
-.input-son:focus {
+.input:focus {
     box-shadow: 0 8px 15px var(--thicc-shadow), 0 0 0 3px var(--radioactive-7oda);
     transform: translateY(-2px);
 }
 
-.register-son {
+.register {
     width: 100%;
     padding: 1rem;
     border-radius: 50px;
@@ -156,19 +153,16 @@ form {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.register-son:hover {
+.register:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 6px 15px var(--thicc-shadow);
 }
 
-.register-son:active {
+.register:active {
     transform: translateY(1px) scale(0.98);
 }
 
-
-
-
-.ORSHI {
+.divider {
     display: flex;
     align-items: center;
     width: 100%;
@@ -178,33 +172,30 @@ form {
     font-size: 0.9rem;
 }
 
-.ORSHI::before,
-.ORSHI::after {
+.divider::before,
+.divider::after {
     content: '';
     flex: 1;
     border-bottom: 1px solid var(--gay);
 }
 
-.ORSHI span {
+.divider span {
     padding: 0 1rem;
 }
 
-.login-link p {
+.login p {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color1);
 }
 
-.login-link a {
+.login a {
     color: var(--yayoo2);
     text-decoration: none;
     font-weight: 700;
 }
 
-
-
-
-.gglbtn {
+.social {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -212,12 +203,12 @@ form {
     margin-bottom: 2rem;
 }
 
-.gglbtn p {
+.social p {
     font-size: 0.9rem;
     color: var(--color1);
 }
 
-.google-btn {
+.google {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -233,46 +224,44 @@ form {
     transition: background-color 0.2s;
 }
 
-.google-btn:hover {
+.google:hover {
     background-color: var(--idk2);
 }
 
-.google-btn img {
+.google img {
     width: 40px;
     height: 40px;
 }
 
-.google-btn span {
+.google span {
     font-size: 0.85rem;
     color: var(--color2);
     font-weight: 500;
 }
 
-/* Responsiveness? */
-
 @media (max-width: 850px) {
-    .box {
+    .ballknowledge {
         flex-direction: column;
     }
 
-    .left-box,
-    .right-box {
+    .left,
+    .right {
         width: 100%;
         padding: 4rem 2rem;
     }
 
-    .back-btn {
+    .back {
         top: 1.5rem;
         left: 1.5rem;
     }
 }
 
-.form-container {
+.container {
     opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
-.form-container>h1 {
+.container>h1 {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.1s forwards;
 }
@@ -282,17 +271,17 @@ form {
     animation: fadeInUp 0.6s ease-out 0.2s forwards;
 }
 
-.ORSHI {
+.divider {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-.social-login {
+.social {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.4s forwards;
 }
 
-.login-link {
+.login {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.5s forwards;
 }
@@ -309,12 +298,12 @@ form {
     }
 }
 
-.right-content img {
+.content img {
     opacity: 0;
     animation: fadeIn 0.3s ease-in-out 0.4s forwards;
 }
 
-.right-content h2 {
+.content h2 {
     opacity: 0;
     animation: fadeIn 0.3s ease-in-out 0.4s forwards;
 }

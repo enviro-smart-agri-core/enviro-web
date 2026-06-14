@@ -1,6 +1,4 @@
-
-
-.wrapper {
+.ballknowledge {
     --primary-green: #144f36;
     --form-bg-green: #51856c;
     --button-green: #0a3a2a;
@@ -20,7 +18,6 @@
     margin: 0 auto;
     padding: 40px 5vw;
 }
-
 
 @keyframes slideUpFade {
     0% {
@@ -48,8 +45,7 @@
     }
 }
 
-/* 🌟 Renamed duplicate IDs to specific classes */
-.heroSection {
+.hero {
     animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     text-align: center;
     padding: 6vw 4vw;
@@ -58,7 +54,7 @@
     border-radius: 24px;
 }
 
-.missionSection {
+.mission {
     opacity: 0;
     animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
     display: flex;
@@ -70,14 +66,14 @@
     margin-bottom: 6vw;
 }
 
-.coreSection {
+.core {
     opacity: 0;
     animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     margin-bottom: 6vw;
     text-align: center;
 }
 
-.ctaSection {
+.cta {
     opacity: 0;
     animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
     background-color: var(--form-bg-green);
@@ -88,13 +84,12 @@
     margin-bottom: 4vw;
 }
 
-
-.aboutContent {
+.container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.smallbox {
+.small {
     display: inline-block;
     background-color: var(--badge-green);
     color: var(--primary-green);
@@ -106,7 +101,7 @@
     margin-bottom: 20px;
 }
 
-.heroSection h1 {
+.hero h1 {
     font-family: var(--font-serif);
     font-size: clamp(3rem, 5vw, 5.5rem);
     font-style: italic;
@@ -115,17 +110,16 @@
     margin-bottom: 20px;
 }
 
-.heroSection p {
+.hero p {
     color: var(--text-muted);
     font-size: clamp(1rem, 1.2vw, 1.3rem);
 }
 
-
-.missionText {
+.text {
     flex: 1;
 }
 
-.missionText h2 {
+.text h2 {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 3.5vw, 3.5rem);
     font-style: italic;
@@ -133,31 +127,30 @@
     margin-bottom: 24px;
 }
 
-.missionText p {
+.text p {
     color: var(--text-dark);
     font-size: clamp(1rem, 1.1vw, 1.15rem);
     margin-bottom: 16px;
 }
 
-.missionImage {
+.artwork {
     flex: 1;
     display: flex;
     justify-content: center;
     transition: transform 0.5s ease;
 }
 
-.missionImage:hover {
+.artwork:hover {
     transform: scale(1.02);
 }
 
-.missionImage img {
+.artwork img {
     max-width: 100%;
     width: 400px;
     border-radius: 16px;
 }
 
-
-.coreSection h2 {
+.core h2 {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 3.5vw, 3.5rem);
     font-style: italic;
@@ -165,13 +158,13 @@
     margin-bottom: 4vw;
 }
 
-.valuesGrid {
+.grid {
     display: flex;
     gap: 2vw;
     justify-content: center;
 }
 
-.valueCards {
+.card {
     flex: 1;
     background-color: var(--white);
     padding: 3vw;
@@ -181,12 +174,12 @@
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.valueCards:hover {
+.card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.icon {
+.img {
     background-color: var(--light-green-bg);
     width: 64px;
     height: 64px;
@@ -199,24 +192,23 @@
     transition: transform 0.3s ease;
 }
 
-.valueCards:hover .icon {
+.card:hover .img {
     animation: pulseGlow 1.5s infinite;
     transform: scale(1.1);
 }
 
-.valueCards h3 {
+.card h3 {
     font-size: 1.3rem;
     color: var(--primary-green);
     margin-bottom: 12px;
 }
 
-.valueCards p {
+.card p {
     font-size: 0.95rem;
     color: var(--text-muted);
 }
 
-
-.ctaSection h2 {
+.cta h2 {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 3.5vw, 3.5rem);
     font-style: italic;
@@ -224,7 +216,7 @@
     font-weight: 400;
 }
 
-.btnPrimary {
+.button {
     display: inline-block;
     background-color: var(--button-green);
     color: var(--white);
@@ -235,37 +227,36 @@
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btnPrimary:hover {
+.button:hover {
     background-color: #000000;
     transform: scale(1.05) translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-
 @media (max-width: 992px) {
-    .missionSection {
+    .mission {
         flex-direction: column;
         text-align: center;
     }
 
-    .valuesGrid {
+    .grid {
         flex-direction: column;
         gap: 20px;
     }
 
-    .valueCards {
+    .card {
         padding: 40px 20px;
     }
 }
 
 @media (max-width: 768px) {
-    .wrapper {
+    .ballknowledge {
         padding: 20px 5vw;
     }
 
-    .heroSection,
-    .missionSection,
-    .ctaSection {
+    .hero,
+    .mission,
+    .cta {
         padding: 40px 20px;
     }
 }
