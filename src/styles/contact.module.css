@@ -144,8 +144,8 @@
   margin-bottom: 20px;
 }
 
-.firstPart p {
-  color: var(--white);
+.first p, .first .content p {
+  color: black;
   font-size: clamp(1rem, 1.2vw, 1.5rem);
 }
 
