@@ -3,16 +3,16 @@ import styles from '../styles/home.module.css';
 
 export default function Footer() {
   return (
-    <footer className={styles['site-footer']}>
-      <div className={styles['footer-col']}>
+    <footer className={styles.footer}>
+      <div className={styles.column}>
         <h3>Home</h3>
         <ul>
           <li><Link to="/about">About Us</Link></li>
           <li><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
-      
-      <div className={styles['footer-col']}>
+
+      <div className={styles.column}>
         <h3>Documents</h3>
         <ul>
           <li>
@@ -24,17 +24,16 @@ export default function Footer() {
         </ul>
       </div>
 
-
-      <div className={styles['footer-col']}>
+      <div className={styles.column}>
         <h3>Contact Us</h3>
         <ul>
           <li><a href="tel:+201005792211">+20 1005792211</a></li>
           <li><a href="mailto:Enviro@gmail.com">Enviro@gmail.com</a></li>
         </ul>
       </div>
-      <div className={styles['footer-bottom']}>
+      <div className={styles.bottom}>
         <p>&copy; 2026 Enviro. All rights reserved.</p>
-        <img className={styles['footer-logo']} src="/assets/logo.png" alt="Enviro Logo" />
+        <img className={styles.img} src="/assets/logo.png" alt="Enviro Logo" />
       </div>
     </footer>
   );

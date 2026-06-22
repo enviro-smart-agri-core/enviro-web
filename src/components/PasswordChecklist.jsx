@@ -10,8 +10,8 @@ export default function PasswordChecklist({ password }) {
                 {PASSWORD_RULES.map((rule) => {
                     const passed = rule.test(password);
                     return (
-                        <li key={rule.id} className={`${styles.item} ${passed ? styles.passed : ''}`}>
-                            <span className={styles.icon}>{passed ? '✓' : '○'}</span>
+                        <li key={rule.id} className={`${styles.item} ${passed ? styles.slay : ''}`}>
+                            <span className={styles.img}>{passed ? '✓' : '○'}</span>
                             {rule.label}
                         </li>
                     );

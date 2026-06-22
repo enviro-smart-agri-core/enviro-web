@@ -43,20 +43,20 @@ export default function Login() {
   };
 
   return (
-    <main className={styles.box}>
-      <div className={styles['left-box']}>
-        <Link to="/" className={styles['back-btn']}>
+    <main className={styles.ballknowledge}>
+      <div className={styles.left}>
+        <Link to="/" className={styles.back}>
           <i className="fi fi-rr-arrow-left"></i> Back to Home
         </Link>
 
-        <div className={styles['form-container']}>
+        <div className={styles.container}>
           <h1>Sign In</h1>
 
           {error && <p style={{ color: 'red', marginBottom: '1rem', fontSize: '0.9rem' }}>{error}</p>}
 
           <form onSubmit={handleLogin}>
             <input
-              className={styles['email-son']}
+              className={styles.email}
               type="email"
               placeholder="Email"
               value={email}
@@ -64,7 +64,7 @@ export default function Login() {
               required
             />
             <input
-              className={styles['password-son']}
+              className={styles.password}
               type="password"
               placeholder="Password"
               value={password}
@@ -79,29 +79,29 @@ export default function Login() {
                 Forgot password?
               </Link>
             </div>
-            <button type="submit" className={styles['login-son']} disabled={loading}>
+            <button type="submit" className={styles.login} disabled={loading}>
               {loading ? 'Signing in...' : 'Login'}
             </button>
           </form>
 
           <div className={styles.divider}><span>OR</span></div>
 
-          <div className={styles['social-login']}>
+          <div className={styles.social}>
             <p>Sign In using</p>
-            <button className={styles['google-btn']} type="button">
+            <button className={styles.google} type="button">
               <img src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="Google Logo" />
               <span>Google</span>
             </button>
           </div>
 
-          <div className={styles['signup-link']}>
+          <div className={styles.signup}>
             <p>Don&apos;t have an account? <Link to="/signup">Sign UP!</Link></p>
           </div>
         </div>
       </div>
 
-      <div className={styles['right-box']}>
-        <div className={styles['right-content']}>
+      <div className={styles.right}>
+        <div className={styles.content}>
           <img src="/assets/image 2(1).png" alt="Plant and Wind Turbines Illustration" />
           <h2>The grass is always greener<br />on our side</h2>
         </div>

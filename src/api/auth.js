@@ -1,18 +1,12 @@
-// src/api/auth.js
-
 const BASE_URL = '/api/v1/auth';
 
-// helper to safely parse json from a response
-// handles empty bodies (204 No Content) and non-JSON error text gracefully
 const safeJson = async (response) => {
     const rawText = await response.text();
 
-    // rate limited — tell the user to chill for a sec
     if (response.status === 429) {
         throw new Error('Too many attempts. Please wait a moment before trying again.');
     }
 
-    // empty body — ok if the request succeeded, error if it didn't
     if (!rawText || !rawText.trim()) {
         if (!response.ok) {
             throw new Error(`Request failed with status ${response.status}.`);
@@ -24,7 +18,6 @@ const safeJson = async (response) => {
     try {
         data = JSON.parse(rawText);
     } catch {
-        // non-JSON body
         if (!response.ok) throw new Error(rawText);
         return { message: rawText };
     }
@@ -48,7 +41,6 @@ export const loginUser = async (email, password) => {
     return data;
 };
 
-// step 1 of signup — sends OTP to email
 export const registerRequest = async (username, email, password, name) => {
     const response = await fetch(`${BASE_URL}/register/request`, {
         method: 'POST',
@@ -65,7 +57,6 @@ export const registerRequest = async (username, email, password, name) => {
     return data;
 };
 
-// step 2 of signup — verifies OTP
 export const registerVerify = async (email, otp) => {
     const response = await fetch(`${BASE_URL}/register/verify`, {
         method: 'POST',
@@ -82,7 +73,6 @@ export const registerVerify = async (email, otp) => {
     return data;
 };
 
-// sends reset link/otp to email
 export const forgotPassword = async (email) => {
     const response = await fetch(`${BASE_URL}/forgot-password`, {
         method: 'POST',
@@ -99,7 +89,6 @@ export const forgotPassword = async (email) => {
     return data;
 };
 
-// resets the password using userId + token from email link
 export const resetPassword = async (userId, token, newPassword) => {
     const response = await fetch(`${BASE_URL}/reset-password`, {
         method: 'POST',

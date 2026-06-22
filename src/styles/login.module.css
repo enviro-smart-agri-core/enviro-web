@@ -1,6 +1,4 @@
-
-
-.back-btn {
+.back {
     position: absolute;
     top: 2rem;
     left: 2rem;
@@ -15,19 +13,18 @@
     z-index: 10;
 }
 
-.back-btn:hover {
+.back:hover {
     color: var(--hoda-greenary);
     transform: translateX(-4px);
 }
 
-
-.box {
+.ballknowledge {
     display: flex;
     min-height: 100vh;
     width: 100%;
 }
 
-.left-box {
+.left {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -35,7 +32,7 @@
     padding: 2rem;
 }
 
-.form-container {
+.container {
     width: 100%;
     max-width: 350px;
     display: flex;
@@ -43,7 +40,7 @@
     align-items: center;
 }
 
-.form-container h1 {
+.container h1 {
     font-size: 2.2rem;
     margin-bottom: 2rem;
     color: #000;
@@ -56,9 +53,9 @@ form {
     gap: 1.2rem;
 }
 
-.email-son,
-.password-son,
-.input-son {
+.email,
+.password,
+.input {
     width: 100%;
     padding: 1rem 1.5rem;
     border-radius: 50px;
@@ -70,14 +67,14 @@ form {
     outline: none;
 }
 
-.email-son::placeholder,
-.password-son::placeholder,
-.input-son::placeholder {
+.email::placeholder,
+.password::placeholder,
+.input::placeholder {
     color: #c4d7ce;
 }
 
-.login-son,
-.register-son {
+.login,
+.register {
     width: 100%;
     padding: 1rem;
     border-radius: 50px;
@@ -92,8 +89,8 @@ form {
     transition: transform 0.2s ease;
 }
 
-.login-son:hover,
-.register-son:hover {
+.login:hover,
+.register:hover {
     transform: scale(1.02);
 }
 
@@ -118,7 +115,7 @@ form {
     padding: 0 1rem;
 }
 
-.social-login {
+.social {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,12 +123,12 @@ form {
     margin-bottom: 2rem;
 }
 
-.social-login p {
+.social p {
     font-size: 0.9rem;
     color: #000;
 }
 
-.google-btn {
+.google {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -147,36 +144,36 @@ form {
     transition: background-color 0.2s;
 }
 
-.google-btn:hover {
+.google:hover {
     background-color: #f8f9fa;
 }
 
-.google-btn img {
+.google img {
     width: 40px;
     height: 40px;
 }
 
-.google-btn span {
+.google span {
     font-size: 0.85rem;
     color: #333;
     font-weight: 500;
 }
 
-.signup-link p,
-.login-link p {
+.signup p,
+.login p {
     font-size: 0.9rem;
     font-weight: 600;
     color: #000;
 }
 
-.signup-link a,
-.login-link a {
+.signup a,
+.login a {
     color: #0056b3;
     text-decoration: none;
     font-weight: 700;
 }
 
-.right-box {
+.right {
     flex: 1;
     background-color: #538d72;
     display: flex;
@@ -185,7 +182,7 @@ form {
     padding: 2rem;
 }
 
-.right-content {
+.content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,25 +192,25 @@ form {
     max-width: 500px;
 }
 
-.right-content img {
+.content img {
     width: 100%;
     max-width: 300px;
     height: auto;
 }
 
-.right-content h2 {
+.content h2 {
     font-size: 1.8rem;
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: 0.5px;
 }
 
-.form-container {
+.container {
     opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
-.form-container>h1 {
+.container > h1 {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.1s forwards;
 }
@@ -228,13 +225,13 @@ form {
     animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
-.social-login {
+.social {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.4s forwards;
 }
 
-.signup-link,
-.login-link {
+.signup,
+.login {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.5s forwards;
 }
@@ -251,12 +248,12 @@ form {
     }
 }
 
-.right-content img {
+.content img {
     opacity: 0;
     animation: fadeIn 0.3s ease-in-out 0.4s forwards;
 }
 
-.right-content h2 {
+.content h2 {
     opacity: 0;
     animation: fadeIn 0.3s ease-in-out 0.4s forwards;
 }
@@ -267,55 +264,55 @@ form {
     }
 }
 
-.email-son,
-.password-son,
-.input-son {
+.email,
+.password,
+.input {
     transition: all 0.3s ease;
 }
 
-.email-son:focus,
-.password-son:focus,
-.input-son:focus {
+.email:focus,
+.password:focus,
+.input:focus {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(209, 239, 240, 0.4);
     transform: translateY(-2px);
 }
 
-.login-son,
-.register-son {
+.login,
+.register {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.login-son:hover,
-.register-son:hover {
+.login:hover,
+.register:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.login-son:active,
-.register-son:active {
+.login:active,
+.register:active {
     transform: translateY(1px) scale(0.98);
 }
 
 @media (max-width: 850px) {
-    .box {
+    .ballknowledge {
         flex-direction: column;
     }
 
-    .left-box,
-    .right-box {
+    .left,
+    .right {
         width: 100%;
         min-height: auto;
     }
 
-    .left-box {
+    .left {
         padding: 4rem 2rem;
     }
 
-    .right-box {
+    .right {
         padding: 4rem 2rem;
     }
 
-    .back-btn {
+    .back {
         top: 1.5rem;
         left: 1.5rem;
     }

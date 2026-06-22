@@ -9,15 +9,13 @@
     --border-color: #f3f4f6;
 }
 
-
-.wrapper {
+.ballknowledge {
     display: flex;
     height: 100vh;
     background-color: var(--bg-body);
     color: var(--text-main);
     width: 100%;
 }
-
 
 .sidebar {
     width: 280px;
@@ -29,7 +27,6 @@
     z-index: 10;
     transition: all 0.3s ease;
     flex-shrink: 0;
-    
 }
 
 .name {
@@ -42,11 +39,10 @@
     margin-bottom: 50px;
     letter-spacing: -1px;
     overflow: hidden;
-    
     white-space: nowrap;
 }
 
-.brand-logo {
+.logo {
     width: 32px;
     height: auto;
     object-fit: contain;
@@ -64,7 +60,7 @@
     flex: 1;
 }
 
-.navigation-item {
+.link {
     padding: 14px 20px;
     border-radius: 12px;
     font-weight: 600;
@@ -81,29 +77,29 @@
     text-align: left;
 }
 
-.navigation-item:hover {
+.link:hover {
     background-color: rgba(255, 255, 255, 0.05);
     color: white;
     transform: translateX(5px);
 }
 
-.navigation-item.active {
+.link.slay {
     background-color: var(--forest-teal);
     color: white;
 }
 
-.nav-left {
+.group {
     display: flex;
     align-items: center;
     gap: 14px;
 }
 
-.navigation-item.noaccess:hover i.fa-lock {
+.link.noaccess:hover i.fa-lock {
     color: var(--emerald-green);
     animation: shake 0.4s ease;
 }
 
-.sidebar-download {
+.panel {
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 20px;
@@ -112,14 +108,14 @@
     margin-top: auto;
 }
 
-.sidebar-download p {
+.panel p {
     font-size: 0.8rem;
     color: #d1d5db;
     margin: 10px 0;
     font-weight: 500;
 }
 
-.button-download {
+.download {
     width: 100%;
     padding: 10px;
     border-radius: 8px;
@@ -131,11 +127,10 @@
     transition: 0.2s;
 }
 
-.button-download:hover {
+.download:hover {
     background-color: var(--mint-whisper);
     transform: scale(1.05);
 }
-
 
 .container {
     flex: 1;
@@ -156,31 +151,31 @@
     top: 0;
 }
 
-.headertext h1 {
+.text h1 {
     font-size: 2.2rem;
     font-weight: 900;
     color: var(--dark-evergreen);
     letter-spacing: -1px;
 }
 
-.headertext p {
+.text p {
     color: var(--text-muted);
     font-weight: 500;
     margin-top: 4px;
 }
 
-.myprof {
+.avatar {
     background: transparent;
     border: none;
     cursor: pointer;
     transition: transform 0.2s;
 }
 
-.myprof:hover {
+.avatar:hover {
     transform: scale(1.1) rotate(5deg);
 }
 
-.myprof-icon {
+.img {
     width: 48px;
     height: 48px;
     background-color: #e5e7eb;
@@ -194,16 +189,15 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.app-view {
+.view {
     display: none;
     padding: 20px 60px 60px 60px;
-    animation: WrizzIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.app-view.active {
+.view.slay {
     display: block;
 }
-
 
 .grid {
     display: grid;
@@ -212,7 +206,7 @@
     max-width: 1000px;
 }
 
-.card {
+.avgball {
     background-color: white;
     border-radius: 24px;
     padding: 30px;
@@ -222,12 +216,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.avgball:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-.card-full {
+.full {
     grid-column: span 2;
 }
 
@@ -241,13 +235,13 @@
     display: block;
 }
 
-.weather-flex {
+.weather {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.safe-status {
+.safe {
     font-size: 2rem;
     font-weight: 900;
     color: var(--dark-evergreen);
@@ -260,21 +254,21 @@
     text-align: right;
 }
 
-.water-val {
+.water {
     font-size: 3rem;
     font-weight: 900;
     color: var(--dark-evergreen);
     margin-bottom: 5px;
 }
 
-.sensor-head {
+.sensor {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
 }
 
-.sensor-title {
+.title {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -283,7 +277,7 @@
     color: var(--dark-evergreen);
 }
 
-.sensor-icon {
+.icon {
     width: 40px;
     height: 40px;
     background: var(--mint-whisper);
@@ -305,12 +299,12 @@
     gap: 6px;
 }
 
-.badge-online {
+.online {
     background: var(--mint-whisper);
     color: var(--forest-teal);
 }
 
-.badge-offline {
+.offline {
     background: #f3f4f6;
     color: var(--text-muted);
 }
@@ -323,34 +317,34 @@
     animation: pulse 2s infinite;
 }
 
-.readings-gridss {
+.readings {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-.reading-samboxa {
+.reading {
     background: #f9fafb;
     padding: 15px;
     border-radius: 16px;
     transition: 0.2s;
 }
 
-.reading-samboxa:hover {
+.reading:hover {
     transform: scale(1.03);
     background: white;
     border: 1px solid var(--mint-whisper);
 }
 
-.reading-value,
-.reading-val {
+.value,
+.val {
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--dark-evergreen);
     margin-top: 5px;
 }
 
-.offline-text {
+.lastseen {
     color: var(--text-muted);
     font-weight: 500;
     font-size: 0.9rem;
@@ -360,7 +354,7 @@
     margin-top: 10px;
 }
 
-.add-device {
+.add {
     width: 100%;
     border: 2px dashed #d1d5db;
     background: transparent;
@@ -375,13 +369,13 @@
     margin-top: 24px;
 }
 
-.add-device:hover {
+.add:hover {
     border-color: var(--forest-teal);
     background: rgba(209, 242, 235, 0.3);
     transform: translateY(-2px);
 }
 
-.profile-header-card {
+.profile {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -393,7 +387,7 @@
     max-width: 1000px;
 }
 
-.profile-header-card .big-icon {
+.profile .pic {
     width: 80px;
     height: 80px;
     background: #e5e7eb;
@@ -405,7 +399,7 @@
     color: var(--text-muted);
 }
 
-.list-section-title {
+.title {
     font-weight: 700;
     color: var(--dark-evergreen);
     font-size: 1.1rem;
@@ -413,7 +407,7 @@
     margin-top: 30px;
 }
 
-.settings-list {
+.settings {
     background: white;
     border-radius: 24px;
     border: 1px solid var(--border-color);
@@ -421,7 +415,7 @@
     max-width: 1000px;
 }
 
-.settings-item {
+.row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -431,16 +425,16 @@
     transition: 0.2s;
 }
 
-.settings-item:hover {
+.row:hover {
     background: #f9fafb;
     padding-left: 30px;
 }
 
-.settings-item:last-child {
+.row:last-child {
     border-bottom: none;
 }
 
-.settings-item-left {
+.left {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -448,7 +442,7 @@
     color: var(--dark-evergreen);
 }
 
-.settings-item-right {
+.right {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -457,7 +451,7 @@
     font-weight: 500;
 }
 
-.modal-overlay {
+.overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
@@ -470,12 +464,12 @@
     transition: opacity 0.3s ease;
 }
 
-.modal-overlay.active {
+.overlay.slay {
     display: flex;
     opacity: 1;
 }
 
-.modal-content {
+.content {
     background: white;
     width: 90%;
     max-width: 420px;
@@ -486,11 +480,11 @@
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.modal-overlay.active .modal-content {
+.overlay.slay .content {
     transform: scale(1) translateY(0);
 }
 
-.modal-icon {
+.icon {
     width: 70px;
     height: 70px;
     background: var(--mint-whisper);
@@ -503,24 +497,7 @@
     margin: 0 auto 20px auto;
 }
 
-.btn-cancel {
-    width: 100%;
-    padding: 16px;
-    background: #f3f4f6;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.2s;
-}
-
-.btn-cancel:hover {
-    background: #e5e7eb;
-    color: red;
-}
-
-@keyframes WrizzIn {
+@keyframes slideUp {
     from {
         opacity: 0;
         transform: translateY(20px) scale(0.98);
@@ -547,7 +524,6 @@
 }
 
 @keyframes shake {
-
     0%,
     100% {
         transform: translateX(0);
@@ -562,21 +538,18 @@
     }
 }
 
-
 @media (max-width: 900px) {
     .grid {
         grid-template-columns: 1fr;
     }
 
-    .card-full {
+    .full {
         grid-column: span 1;
     }
 }
 
 @media (max-width: 768px) {
-
-
-    .wrapper {
+    .ballknowledge {
         flex-direction: column;
     }
 
@@ -594,7 +567,7 @@
         margin-bottom: 0;
     }
 
-    .sidebar-download {
+    .panel {
         display: none;
     }
 
@@ -606,17 +579,16 @@
         padding-bottom: 10px;
     }
 
-    .navigation-item {
+    .item {
         padding: 10px 15px;
         white-space: nowrap;
     }
-
 
     .header {
         padding: 20px 20px;
     }
 
-    .app-view {
+    .view {
         padding: 10px 20px 40px 20px;
     }
 }
