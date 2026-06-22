@@ -148,7 +148,7 @@
 }
 
 .firstPart p {
-  color: var(--text-muted);
+  color: var(--white);
   font-size: clamp(1rem, 1.2vw, 1.5rem);
 }
 
